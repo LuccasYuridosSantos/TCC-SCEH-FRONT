@@ -1,0 +1,30 @@
+a{
+    cursor: pointer;
+}
+
+.color-bar{
+    background-color: #a9b4c8;
+}
+
+.btn-menu:hover{
+    color: #92c2ee;
+    background-color: #cb4fe0;
+}
+
+.btn-menu{
+    font: bold;
+    color: #5f0da3;
+    background-color: transparent;
+    border: transparent;
+}
+
+.nome-hospital{
+    font: bold;
+    color: #000000;
+    font-size: 16pt;
+}
+
+.sceh-menu{
+    color: #5f0da3;
+    font-size: 16pt;
+}
