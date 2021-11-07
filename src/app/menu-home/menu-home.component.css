@@ -18,3 +18,15 @@
     background-color: #8F05D0;
     color: #ffffff;
 }
+
+.btn-entrar{
+    border-color: #8F05D0;
+    background-color: white;
+    color: #8F05D0;
+}
+
+.btn-entrar:hover{
+    border-color: #8F05D0;
+    background-color: #8F05D0;
+    color: #ffffff;
+}
