@@ -1,0 +1,59 @@
+<app-menu-home></app-menu-home>
+<div class="container-fluid" id="bg-home">
+    <div class="row text-center pt-4">
+        <div class="col-md-4">
+            <a routerLink='/entrar' id="links-home">
+                <p>HOME</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a routerLink='/sobre-nos' id="links-home">
+                <p>SOBRE NÓS</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a routerLink='/contato' id="links-home">
+                <p>CONTATO</p>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5  d-flex justify-content-center m-auto">
+            <div class="card mt-5 p-5" style="width: 36rem;">
+                <img src="../../assets/img/telefone.png" class="card-img-top px-5" alt="imagem telefone" height="300vh">
+                <div class="card-body mt-4">
+                    <p class="card-text">Entre em contato com nosso time:
+                        Seja para informar alguma funcionalidade que não está funcionando, deseja integrar ao nosso
+                        sistema ou para tirar duvida. </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5 mt-5">
+            <form class="border border border-light rounded-3 p-4 m-5 bg-white">
+                <fieldset>
+                    <legend class="text-center">INFORME SEUS DADOS:</legend>
+                    <div class="mb-3 mt-5">
+                        <label for="" class="form-label">Nome</label>
+                        <input type="text" id="" class="form-control bg-input-contato" placeholder="">
+                    </div>
+
+                    <div class="mb-3 mt-5">
+                        <label for="" class="form-label">Telefone</label>
+                        <input type="tel" id="" class="form-control bg-input-contato" placeholder="">
+                    </div>
+
+                    <div class="mb-3 mt-5">
+                        <label for="" class="form-label">Assunto</label>
+                        <textarea class="form-control bg-input-contato input-assunto"
+                            placeholder="Escreva o assunto aqui" id=""></textarea>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary m-auto">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<app-rodape></app-rodape>

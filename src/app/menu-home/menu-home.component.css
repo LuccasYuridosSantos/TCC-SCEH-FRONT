@@ -1,0 +1,32 @@
+#nav-color{
+    background-color: #B1C6E7;
+}
+
+#sceh-home{
+    color: blueviolet;
+    font-weight: bold;
+}
+
+.btn-logar{
+    border-color: #8F05D0;
+    background-color: white;
+    color: #8F05D0;
+}
+
+.btn-logar:hover{
+    border-color: #8F05D0;
+    background-color: #8F05D0;
+    color: #ffffff;
+}
+
+.btn-entrar{
+    border-color: #8F05D0;
+    background-color: white;
+    color: #8F05D0;
+}
+
+.btn-entrar:hover{
+    border-color: #8F05D0;
+    background-color: #8F05D0;
+    color: #ffffff;
+}

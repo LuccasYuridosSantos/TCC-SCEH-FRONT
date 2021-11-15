@@ -3,28 +3,25 @@ a{
 }
 
 .color-bar{
-    background-color: #a9b4c8;
+    background-color: #B1C6E7;
 }
 
 .btn-menu:hover{
     color: #92c2ee;
-    background-color: #cb4fe0;
+    background-color: #651a72;
 }
 
 .btn-menu{
     font: bold;
-    color: #5f0da3;
+    color: #651A80;
     background-color: transparent;
     border: transparent;
+    font-weight: bold;
 }
 
 .nome-hospital{
-    font: bold;
-    color: #000000;
-    font-size: 16pt;
+    font-weight: bold;
+    color: #651A80;
+    font-size: 20pt;
 }
 
-.sceh-menu{
-    color: #5f0da3;
-    font-size: 16pt;
-}
