@@ -1,0 +1,16 @@
+.text-color{
+    color: #a524b6;
+}
+
+
+.btn-cad{
+    border-color: #8F05D0;
+    background-color: white;
+    color: #8F05D0;
+}
+
+.btn-cad:hover{
+    border-color: #8F05D0;
+    background-color: #8F05D0;
+    color: #ffffff;
+}
