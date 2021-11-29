@@ -1,1 +1,75 @@
-<p>cadastrar works!</p>
+<app-menu-home></app-menu-home>
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex align-items-center justify-content-center text-color">
+            <div class="col-md-5 ">
+                <div class="text-center text-uppercase">
+                    <p class="fs-1">Cadastrar Hospital</p>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpjForm"
+                        placeholder="23.172.042/0001-05">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">DDD</label>
+                    <input type="text" class="form-control" id="dddForm"
+                        placeholder="019">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">TELEFONE</label>
+                    <input type="tel" class="form-control" id="telefoneForm"
+                        placeholder=" 99969-9458">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">TIPO</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecione o Tipo de Hospital</option>
+                        <option value="PRIVADO">PRIVADO</option>
+                        <option value="PUBLICO">PUBLICO</option>
+                      </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">OBSERVACAO</label>
+                    <input type="text" class="form-control" id="observacaoForm">
+                </div>
+                <button type="button" class="btn btn-cad mt-4" id="btn-cadastrar-hospital ">
+                    Cadastrar Hospital
+                </button>
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <div class="text-center text-uppercase titulo">
+                    <p class="fs-1">Cadastrar Funcionario</p>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">NOME</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Informe o nome">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">CNPJ DO HOSPITAL</label>
+                    <input type="text" class="form-control" id="cnpjForm"
+                        placeholder="23.172.042/0001-05">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">MATRICULA</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Informe o numero de matricula">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">USERNAME</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">SENHA</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <button type="button" class="btn btn-cad mt-4" id="btn-cadastrar-Funcionario">
+                    Cadastrar Funcionario
+                  </button>
+            </div>
+        </div>
+    </div>
+    <app-rodape></app-rodape>
