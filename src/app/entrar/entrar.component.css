@@ -1,34 +1,8 @@
-#img-bg{
-    background-image: url("../../assets/img/image1.png");
-    min-height: 695px;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 #bg-home{
     background-color: #DCEEEB;
-    height: 87vh;
+    height: 100vh;
 }
 
-#links-home{
-    font-size: 18pt;
-    color: #651A80;
-    font-weight: bold;
-}
 
-#links-home:hover{
-    color: #4b0564;
-    font-weight: bold;
-}
 
-#img-bg-left{
-    background-image: url("../../assets/img/image2.png");
-    height: auto; 
-    width: 50%; 
-    min-height: 695px;   
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
