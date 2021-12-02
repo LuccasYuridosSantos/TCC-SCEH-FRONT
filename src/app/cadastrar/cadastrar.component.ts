@@ -14,7 +14,6 @@ import { AuthService } from '../service/auth.service';
 })
 export class CadastrarComponent implements OnInit {
 
-  funcionarioLogin: FuncionarioLogin = new FuncionarioLogin;
   funcionario: Funcionario = new Funcionario
   hospital: Hospital = new Hospital
   hospitalReq: HospitalRequest = new HospitalRequest
