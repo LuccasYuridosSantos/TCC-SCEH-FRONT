@@ -6,22 +6,25 @@ a{
     background-color: #B1C6E7;
 }
 
-.btn-menu:hover{
-    color: #92c2ee;
-    background-color: #651a72;
+.btn-menu{
+    border-color: #8F05D0;
+    background-color: white;
+    color: #8F05D0;
 }
 
-.btn-menu{
-    font: bold;
-    color: #651A80;
-    background-color: transparent;
-    border: transparent;
-    font-weight: bold;
+.btn-menu:hover{
+    border-color: #8F05D0;
+    background-color: #8F05D0;
+    color: #ffffff;
 }
 
 .nome-hospital{
     font-weight: bold;
-    color: #651A80;
+    color: #a524b6;
     font-size: 20pt;
+}
+
+.text-color{
+    color: #a524b6;
 }
 

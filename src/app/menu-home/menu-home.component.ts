@@ -30,6 +30,7 @@ export class MenuHomeComponent implements OnInit {
       environment.token = this.funcionarioLogin.token
       environment.nome = this.funcionarioLogin.nome
       environment.id = this.funcionarioLogin.codigoFuncionario
+      environment.nomeFantasia = this.funcionarioLogin.nomeHospital
 
       this.router.navigate(['/inicio'])
 
