@@ -8,17 +8,26 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+  nome = environment.nome
+  cnpj = environment.cnpj
 
   constructor(
     private router: Router
   ) { }
 
-  ngOnInit(){
-
+  ngOnInit(){ /*
     if(environment.token == ''){
       alert('Sua seção expirou, faça o login novamente')
       this.router.navigate(['/entrar'])
     }
+    
+    */
+    
+  }
+
+
+  cadastrarRecurso(){
+    
   }
 
 }

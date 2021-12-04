@@ -1,0 +1,25 @@
+.fs-54{
+    font-size: 54pt;
+}
+
+.fs-18{
+    font-size: 18pt;
+}
+
+.btn-menu{
+    border-color: #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.btn-menu:hover{
+    border-color: #9318b9;
+    background-color: #9318b9;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.font-bold{
+    font-weight: bold;
+}
