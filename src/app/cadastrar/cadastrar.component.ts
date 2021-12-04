@@ -32,7 +32,7 @@ export class CadastrarComponent implements OnInit {
   }
 
   confirmarSenha(event: any) {
-    this.confimarSenha = event.targe.value
+    this.confimarSenha = event.target.value
   }
 
   cadastrarFuncionario() {
@@ -46,6 +46,8 @@ export class CadastrarComponent implements OnInit {
       alert('Preencha todos os campos!')
       console.log(this.funcionario)
     } else if (this.confimarSenha != this.funcionario.senha) {
+      console.log(this.confimarSenha)
+      console.log(this.funcionario.senha)
       alert('As senhas estão incorretas!')
     } else {
       this.authService.cadastrarFuncionario(this.funcionario).subscribe((resp: Funcionario) => {
