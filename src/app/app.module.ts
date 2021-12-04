@@ -17,6 +17,7 @@ import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 import { SubmenuComponent } from './submenu/submenu.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PesquisaComponent } from './pesquisa/pesquisa.component';
     SobreNosComponent,
     SubmenuComponent,
     InicioComponent,
-    PesquisaComponent
+    PesquisaComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
