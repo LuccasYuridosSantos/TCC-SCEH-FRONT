@@ -1,8 +1,20 @@
-
-#bg-home{
-    background-color: #DCEEEB;
-    height: 100vh;
+.btn-pesquisar{
+    border-color: #8F05D0;
+    background-color: white;
+    color: #8F05D0;
 }
 
+.btn-pesquisar:hover{
+    border-color: #8F05D0;
+    background-color: #8F05D0;
+    color: #ffffff;
+}
 
+.banners{
+    margin-top: 70px;
+}
 
+.titulo-pesquisa{
+    text-align: center;
+    font-size: larger;
+}
