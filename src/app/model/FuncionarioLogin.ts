@@ -6,4 +6,5 @@ export class FuncionarioLogin {
 	public token!: string
 	public nomeHospital!: string
 	public cnpj!: string
+	public permissao!: string
 }

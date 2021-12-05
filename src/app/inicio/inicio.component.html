@@ -10,7 +10,7 @@
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-menu me-2" data-bs-toggle="modal"
+                        <button *ngIf='usuarioComPermissao()'  type="button" class="btn btn-menu me-2" data-bs-toggle="modal"
                             data-bs-target="#novoRecurso">
                             Cadastrar Recurso
                         </button>
@@ -31,15 +31,19 @@
 
     <nav>
         <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+
             <button (click)='buscarTodosRecursos()' class="nav-link active" id="nav-todosRecursos-tab" data-bs-toggle="tab"
                 data-bs-target="#nav-todosRecursos" type="button" role="tab" aria-controls="nav-todosRecursos"
                 aria-selected="true">Recursos</button>
+
             <button (click)='buscarTodosRecursosDoHospital()' class="nav-link" id="nav-recursoHospital-tab" data-bs-toggle="tab"
                 data-bs-target="#nav-recursoHospital" type="button" role="tab" aria-controls="nav-recursoHospital"
                 aria-selected="false">Recursos do Hospital</button>
+
             <button class="nav-link" id="nav-solicitacao-tab" data-bs-toggle="tab" data-bs-target="#nav-solicitacao"
                 type="button" role="tab" aria-controls="nav-solicitacao" aria-selected="false">Solicitações</button>
-            <button class="nav-link" id="nav-reservas-tab" data-bs-toggle="tab" data-bs-target="#nav-reservas"
+
+            <button (click)='buscarTodasReservasHospital()' class="nav-link" id="nav-reservas-tab" data-bs-toggle="tab" data-bs-target="#nav-reservas"
                 type="button" role="tab" aria-controls="nav-reservas" aria-selected="false">Reservas</button>
         </div>
     </nav>
@@ -67,7 +71,7 @@
                             <label>Descrição:</label>
                             <p class="card-text"> {{recurso.descricao}}</p>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
+                        <div *ngIf='usuarioComPermissao()' class="card-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-success me-2">
                                 Reservar
                             </button>
@@ -79,7 +83,7 @@
 
         <div class="tab-pane fade mt-3 mb-3" id="nav-recursoHospital" role="tabpanel" aria-labelledby="nav-recursoHospital-tab">
 
-            <table class="table table-info table-hover">
+            <table class="table table-light table-hover mt-3 ">
                 <thead>
                     <tr class="table-custom-header text-center">
                         <th scope="col">Nome</th>
@@ -90,7 +94,7 @@
                         <th scope="col">Data Validade</th>
                         <th scope="col">Lote</th>
                         <th scope="col">Descrição</th>
-                        <th scope="col">Opções</th>
+                        <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -103,7 +107,7 @@
                         <td>{{recurso.dataValidade}}</td>
                         <td>{{recurso.lote}}</td>
                         <td>{{recurso.descricao}}</td>
-                        <td class="d-flex justify-content-center">
+                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
                             <button type="button" class="btn btn-danger me-2">
                                 Deletar
                             </button>
@@ -119,32 +123,37 @@
 
         <div class="tab-pane fade" id="nav-solicitacao" role="tabpanel" aria-labelledby="nav-solicitacao-tab">
 
-            <table class="table">
+            <table class="table table-light table-hover mt-3 ">
                 <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                    <tr class="table-custom-header text-center">
+                        <th scope="col">Nome</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Data Reserva</th>
+                        <th scope="col">Data Retirada</th>
+                        <th scope="col">Local Entrega</th>
+                        <th scope="col">Entregador</th>
+                        <th scope="col">Solicitante</th>
+                        <th scope="col">Data Entrega</th>
+                        <th scope="col">Nome Recurso</th>
+                        <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                <tbody >
+                    <tr *ngFor='let reserva of listaReserva' class="text-center">
+                        <td>{{reserva.codigoReserva}}</td>
+                        <td>{{reserva.quantidade}}</td>
+                        <td>{{reserva.dataReserva}}</td>
+                        <td>{{reserva.dataRetirada}}</td>
+                        <td>{{reserva.localEntrega}}</td>
+                        <td>{{reserva.entregador}}</td>
+                        <td>{{reserva.solicitante}}</td>
+                        <td>{{reserva.dataEntrega}}</td>
+                        <td>{{reserva.recursoHospitalar.nome}}</td>                        
+                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-info">
+                                Editar
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -152,19 +161,41 @@
         </div>
 
         <div class="tab-pane fade" id="nav-reservas" role="tabpanel" aria-labelledby="nav-reservas-tab">
-            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural
-                                lead-in
-                                to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <table class="table table-light table-hover mt-3 ">
+                <thead>
+                    <tr class="table-custom-header text-center">
+                        <th scope="col">Codigo Reserva</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Data Reserva</th>
+                        <th scope="col">Data Retirada</th>
+                        <th scope="col">Local Entrega</th>
+                        <th scope="col">Entregador</th>
+                        <th scope="col">Solicitante</th>
+                        <th scope="col">Data Entrega</th>
+                        <th scope="col">Nome Recurso</th>
+                        <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor='let reserva of listaReserva' class="text-center">
+                        <td>{{reserva.codigoReserva}}</td>
+                        <td>{{reserva.quantidade}}</td>
+                        <td>{{reserva.dataReserva}}</td>
+                        <td>{{reserva.dataRetirada}}</td>
+                        <td>{{reserva.localEntrega}}</td>
+                        <td>{{reserva.entregador}}</td>
+                        <td>{{reserva.solicitante}}</td>
+                        <td>{{reserva.dataEntrega}}</td>
+                        <td>{{reserva.recursoHospitalar.nome}}</td>                        
+                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-info">
+                                Editar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
 

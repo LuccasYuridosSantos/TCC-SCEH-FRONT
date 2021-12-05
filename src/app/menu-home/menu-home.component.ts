@@ -32,6 +32,7 @@ export class MenuHomeComponent implements OnInit {
       environment.id = this.funcionarioLogin.codigoFuncionario
       environment.nomeFantasia = this.funcionarioLogin.nomeHospital
       environment.cnpj = this.funcionarioLogin.cnpj
+      environment.permissao = this.funcionarioLogin.permissao
 
       this.router.navigate(['/inicio'])
 

@@ -4,5 +4,6 @@ export const environment = {
   id:0,
   nome:'',
   nomeFantasia:'',
-  cnpj: ''
+  cnpj: '',
+  permissao: ''
 };

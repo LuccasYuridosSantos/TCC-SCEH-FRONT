@@ -30,7 +30,14 @@ export class RecursoService {
   }
 
   postRecurso(recursoRequest: RecursoRequest): Observable<RecursoRequest>{
-    console.log(this.token)
     return this.http.post<RecursoRequest>('http://localhost:8080/recurso/cadastrar',recursoRequest, this.token)
+  }
+
+  putRecurso(recursoRequest: RecursoRequest): Observable<RecursoRequest>{
+    return this.http.post<RecursoRequest>('http://localhost:8080/recurso/atualizar',recursoRequest, this.token)
+  }
+
+  deleteRecurso(id: number): Observable<RecursoRequest>{
+    return this.http.delete<RecursoRequest>('http://localhost:8080/recurso/deletar/'+id, this.token)
   }
 }
