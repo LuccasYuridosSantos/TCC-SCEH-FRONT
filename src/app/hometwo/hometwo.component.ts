@@ -5,11 +5,11 @@ import { FuncionarioLogin } from '../model/FuncionarioLogin';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-hometwo',
+  templateUrl: './hometwo.component.html',
+  styleUrls: ['./hometwo.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HometwoComponent implements OnInit {
 
   funcionarioLogin: FuncionarioLogin = new FuncionarioLogin;
 

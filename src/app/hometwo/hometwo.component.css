@@ -1,0 +1,19 @@
+#img-bg{
+    background-image: url("../../assets/img/logo4-ok.png");
+    min-height: 695px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.oi{
+    border-style: solid;
+}
+
+.bem-vindo{
+    margin-bottom: 25px;
+}
+
+.div-botao{
+    margin-left: 85%;
+}

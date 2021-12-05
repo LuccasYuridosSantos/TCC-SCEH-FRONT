@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <h1 class="bem-vindo">BEM-VINDO</h1>
+
+                    <form class="formulario">
+                        <div class="row mb-3">
+                          <label for="usuario" class="col-sm-2 col-form-label">Usuário</label>
+                          <div class="col-sm-10">
+                            <input [(ngModel)]='funcionarioLogin.username' class="form-control" type="text" name="usuario" id="usuario" placeholder="Digite seu usuario">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label for="usuario" class="col-sm-2 col-form-label">Senha</label>
+                          <div class="col-sm-10">
+                            <input [(ngModel)]='funcionarioLogin.senha' class="form-control" type="password" name="usuario" id="usuario" placeholder="Digite sua senha">
+                          </div>
+                        </div>
+                        
+                        <div class="div-botao">
+                            <button (click)='entrar()' type="submit" class="btn btn-outline-success" id="cadastrar-hospital">Entrar</button>
+                        </div>
+                        
+                      </form>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" id="img-bg">
+            
+        </div>
+    </div>
+</div>

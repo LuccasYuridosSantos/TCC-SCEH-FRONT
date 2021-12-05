@@ -9,15 +9,11 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
-import { LoginComponent } from './login/login.component';
-import { EntrarComponent } from './entrar/entrar.component';
 import { MenuHomeComponent } from './menu-home/menu-home.component';
-import { ContatoComponent } from './contato/contato.component';
-import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
-import { SubmenuComponent } from './submenu/submenu.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { HomeComponent } from './home/home.component';
+import { HometwoComponent } from './hometwo/hometwo.component';
 
 @NgModule({
   declarations: [
@@ -25,15 +21,11 @@ import { HomeComponent } from './home/home.component';
     MenuComponent,
     RodapeComponent,
     CadastrarComponent,
-    LoginComponent,
-    EntrarComponent,
     MenuHomeComponent,
-    ContatoComponent,
-    SobreNosComponent,
-    SubmenuComponent,
     InicioComponent,
     PesquisaComponent,
-    HomeComponent
+    HomeComponent,
+    HometwoComponent
   ],
   imports: [
     BrowserModule,
