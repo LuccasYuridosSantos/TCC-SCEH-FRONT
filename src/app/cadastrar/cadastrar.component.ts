@@ -14,11 +14,11 @@ import { AuthService } from '../service/auth.service';
 })
 export class CadastrarComponent implements OnInit {
 
-  funcionario: Funcionario = new Funcionario
-  hospital: Hospital = new Hospital
-  hospitalReq: HospitalRequest = new HospitalRequest
-  hospitalCad: Hospital = new Hospital
-  permissao: Permissao = new Permissao
+  funcionario: Funcionario = new Funcionario()
+  hospital: Hospital = new Hospital()
+  hospitalReq: HospitalRequest = new HospitalRequest()
+  hospitalCad: Hospital = new Hospital()
+  permissao: Permissao = new Permissao()
   confimarSenha: string
   valueTipo: string = ''
 
@@ -44,7 +44,6 @@ export class CadastrarComponent implements OnInit {
     if (this.funcionario.matricula == null || this.funcionario.hospital == null ||
       this.funcionario.nome == null || this.funcionario.senha == null || this.funcionario.username == null) {
       alert('Preencha todos os campos!')
-      console.log(this.funcionario)
     } else if (this.confimarSenha != this.funcionario.senha) {
       console.log(this.confimarSenha)
       console.log(this.funcionario.senha)

@@ -5,4 +5,5 @@ export class FuncionarioLogin {
 	public senha!: string
 	public token!: string
 	public nomeHospital!: string
+	public cnpj!: string
 }

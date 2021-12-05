@@ -12,7 +12,7 @@ import { AuthService } from '../service/auth.service';
 export class MenuHomeComponent implements OnInit {
 
 
-  funcionarioLogin: FuncionarioLogin = new FuncionarioLogin;
+  funcionarioLogin: FuncionarioLogin = new FuncionarioLogin()
 
   constructor(
     private auth: AuthService,
@@ -31,6 +31,7 @@ export class MenuHomeComponent implements OnInit {
       environment.nome = this.funcionarioLogin.nome
       environment.id = this.funcionarioLogin.codigoFuncionario
       environment.nomeFantasia = this.funcionarioLogin.nomeHospital
+      environment.cnpj = this.funcionarioLogin.cnpj
 
       this.router.navigate(['/inicio'])
 

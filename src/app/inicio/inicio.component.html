@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-    <div class="row bg-secondary d-flex align-items-center">
+    <div class="row bg-custom d-flex align-items-center">
         <div class="col-md-6 text-white">
 
             <div class="row d-flex justify-content-center">
@@ -11,7 +11,7 @@
                 <div class="row d-flex justify-content-center mt-3">
                     <div class="col-md-6">
                         <button type="button" class="btn btn-menu me-2" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                            data-bs-target="#novoRecurso">
                             Cadastrar Recurso
                         </button>
                         <a class="btn btn-menu" href="#verRecursos">Ver Recursos</a>
@@ -28,74 +28,206 @@
 </div>
 
 <div class="container mt-5 mb-5" id="verRecursos">
-    <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="todosRecursos-tab" data-bs-toggle="pill"
-                    data-bs-target="#todosRecursos" type="button" role="tab" aria-controls="todosRecursos"
-                    aria-selected="true">Recursos</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="hospitalRecursos-tab" data-bs-toggle="pill"
-                    data-bs-target="#hospitalRecursos" type="button" role="tab" aria-controls="hospitalRecursos"
-                    aria-selected="true">Recursos do Hospital</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="reservas-tab" data-bs-toggle="pill" data-bs-target="#reservas"
-                    type="button" role="tab" aria-controls="reservas" aria-selected="false">Reservas</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="solicitacao-tab" data-bs-toggle="pill" data-bs-target="#solicitacao"
-                    type="button" role="tab" aria-controls="solicitacao" aria-selected="false">Solicitações</button>
-            </li>
-        </ul>
-    </div>
 
-    <div class="tab-content" id="pills-tabContent">
-
-
-        <div class="tab-pane fade show active" id="todosRecursos" role="tabpanel" aria-labelledby="todosRecursos-tab">
-            Todos Recursos
+    <nav>
+        <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+            <button (click)='buscarTodosRecursos()' class="nav-link active" id="nav-todosRecursos-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-todosRecursos" type="button" role="tab" aria-controls="nav-todosRecursos"
+                aria-selected="true">Recursos</button>
+            <button (click)='buscarTodosRecursosDoHospital()' class="nav-link" id="nav-recursoHospital-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-recursoHospital" type="button" role="tab" aria-controls="nav-recursoHospital"
+                aria-selected="false">Recursos do Hospital</button>
+            <button class="nav-link" id="nav-solicitacao-tab" data-bs-toggle="tab" data-bs-target="#nav-solicitacao"
+                type="button" role="tab" aria-controls="nav-solicitacao" aria-selected="false">Solicitações</button>
+            <button class="nav-link" id="nav-reservas-tab" data-bs-toggle="tab" data-bs-target="#nav-reservas"
+                type="button" role="tab" aria-controls="nav-reservas" aria-selected="false">Reservas</button>
         </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
 
-
-        <div class="tab-pane fade" id="hospitalRecursos" role="tabpanel" aria-labelledby="hospitalRecursos-tab">
-            Hopital Recursos
-        </div>
-
-
-        <div class="tab-pane fade" id="reservas" role="tabpanel" aria-labelledby="reservas-tab">
-            Reservas
-
-        </div>
-
-
-        <div class="tab-pane fade" id="solicitacao" role="tabpanel" aria-labelledby="solicitacao-tab">
-            Solicitações
-
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Recurso</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-               
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">FECHAR</button>
-                <button type="button" class="btn btn-primary">CADASTRAR</button>
+        <div class="tab-pane fade show active" id="nav-todosRecursos" role="tabpanel" aria-labelledby="nav-todosRecursos-tab">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-3">
+                <div class="col mb-3" *ngFor='let recurso of listaRecurso' style="width: 18rem;">
+                    <div class="card border-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center">
+                            <h5>{{recurso.nome}}</h5>
+                        </div>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Sobre Recurso:</h5>
+                            <label>Quantidade:</label>
+                            <p class="card-text"> {{recurso.quantidade}}</p>
+                            <label>Marca:</label>
+                            <p class="card-text">{{recurso.marca}}</p>
+                            <label>Fabricante:</label>
+                            <p class="card-text"> {{recurso.fabricante}}</p>
+                            <label>Data de Fabricação:</label>
+                            <p class="card-text"> {{recurso.dataFabricacao}}</p>
+                            <label>Data de Validade:</label>
+                            <p class="card-text"> {{recurso.dataValidade}}</p>
+                            <label>Descrição:</label>
+                            <p class="card-text"> {{recurso.descricao}}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-success me-2">
+                                Reservar
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="tab-pane fade mt-3 mb-3" id="nav-recursoHospital" role="tabpanel" aria-labelledby="nav-recursoHospital-tab">
+
+            <table class="table table-info table-hover">
+                <thead>
+                    <tr class="table-custom-header text-center">
+                        <th scope="col">Nome</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Fabricante</th>
+                        <th scope="col">Data Fabricação</th>
+                        <th scope="col">Data Validade</th>
+                        <th scope="col">Lote</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Opções</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor='let recurso of listaRecursoDoHospital' class="text-center">
+                        <td>{{recurso.nome}}</td>
+                        <td>{{recurso.quantidade}}</td>
+                        <td>{{recurso.marca}}</td>
+                        <td>{{recurso.fabricante}}</td>
+                        <td>{{recurso.dataFabricacao}}</td>
+                        <td>{{recurso.dataValidade}}</td>
+                        <td>{{recurso.lote}}</td>
+                        <td>{{recurso.descricao}}</td>
+                        <td class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger me-2">
+                                Deletar
+                            </button>
+                            <button type="button" class="btn btn-info">
+                                Editar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="tab-pane fade" id="nav-solicitacao" role="tabpanel" aria-labelledby="nav-solicitacao-tab">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="tab-pane fade" id="nav-reservas" role="tabpanel" aria-labelledby="nav-reservas-tab">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+                <div class="col">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural
+                                lead-in
+                                to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-</div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="novoRecurso" tabindex="-1" aria-labelledby="novoRecursoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoRecursoLabel">Cadastrar Recurso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Nome</label>
+                        <input [(ngModel)]='recursoRequest.nome' class="form-control" type="text" name="nomeRecurso"
+                            id="nomeRecurso" placeholder="Digite o nome do recurso">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Marca</label>
+                        <input [(ngModel)]='recursoRequest.marca' class="form-control" type="text" name="marcaRecurso"
+                            id="marcaRecurso" placeholder="Digite a marca do recurso">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Quantidade</label>
+                        <input [(ngModel)]='recursoRequest.quantidade' class="form-control" type="number"
+                            name="quantidadeRecurso" id="quantidadeRecurso" placeholder="Informe a quantidade">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Fabricante</label>
+                        <input [(ngModel)]='recursoRequest.fabricante' class="form-control" type="text"
+                            name="fabricante" id="fabricante" placeholder="informe o fabricante">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Lote</label>
+                        <input [(ngModel)]='recursoRequest.lote' class="form-control" type="text" name="lote" id="lote"
+                            placeholder="informe o lote">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Descricao</label>
+                        <input [(ngModel)]='recursoRequest.descricao' class="form-control" type="text" name="descricao"
+                            id="descricao" placeholder="Descrição">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Data de Fabricação</label>
+                        <input class="form-control" [(ngModel)]='recursoRequest.dataFabricacao' type="date"
+                            name="dataFabricacao" id="dataFabricacao">
+                    </div>
+                    <div class="form-group mt-1">
+                        <label for="usuario" class="mb-2">Data de Validade</label>
+                        <input [(ngModel)]='recursoRequest.dataValidade' class="form-control" type="date"
+                            name="dataValidade" id="dataValidade">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">FECHAR</button>
+                    <button type="button" (click)='cadastrarRecurso()' data-bs-dismiss="modal"
+                        class="btn btn-primary">CADASTRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>

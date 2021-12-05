@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
-import { LoginComponent } from './login/login.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { MenuHomeComponent } from './menu-home/menu-home.component';
 import { ContatoComponent } from './contato/contato.component';
@@ -23,7 +22,6 @@ import { InicioComponent } from './inicio/inicio.component';
     MenuComponent,
     RodapeComponent,
     CadastrarComponent,
-    LoginComponent,
     EntrarComponent,
     MenuHomeComponent,
     ContatoComponent,
