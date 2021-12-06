@@ -23,6 +23,7 @@ import { SolicitacaoEditComponent } from './edit/solicitacao-edit/solicitacao-ed
 import { SolicitacaoDeleteComponent } from './edit/solicitacao-delete/solicitacao-delete.component';
 import { RecursoDeleteComponent } from './edit/recurso-delete/recurso-delete.component';
 import { RecursoEditComponent } from './edit/recurso-edit/recurso-edit.component';
+import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicitacao-recurso.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RecursoEditComponent } from './edit/recurso-edit/recurso-edit.component
     SolicitacaoEditComponent,
     SolicitacaoDeleteComponent,
     RecursoDeleteComponent,
-    RecursoEditComponent
+    RecursoEditComponent,
+    SolicitacaoRecursoComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { ReservaDeleteComponent } from './edit/reserva-delete/reserva-delete.com
 import { ReservaEditComponent } from './edit/reserva-edit/reserva-edit.component';
 import { SolicitacaoDeleteComponent } from './edit/solicitacao-delete/solicitacao-delete.component';
 import { SolicitacaoEditComponent } from './edit/solicitacao-edit/solicitacao-edit.component';
+import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicitacao-recurso.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ReservaComponent } from './reserva/reserva.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'solicitacao-edit/:id', component: SolicitacaoEditComponent},
   {path: 'solicitacao-delete/:id', component: SolicitacaoDeleteComponent},
   {path: 'recurso-edit/:id', component: RecursoEditComponent},
-  {path: 'recurso-delete/:id', component: RecursoDeleteComponent}
+  {path: 'recurso-delete/:id', component: RecursoDeleteComponent},
+  {path: 'solicitacao-recurso/:id', component: SolicitacaoRecursoComponent}
 
 ];
 

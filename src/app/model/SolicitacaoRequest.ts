@@ -1,13 +1,13 @@
 export class SolicitacaoRequest{
-    private codigoRecurso!: number
-	private quantidade!: number
-	private nome!: string
-	private marca!: string
-	private fabricante!: string
-	private descricao!: string
-	private urgencia!: boolean
-	private observacao!: string
-	private ativo!: boolean
-	private cnpj!: string
-	private codigoFuncionario!: number
+    public codigoRecurso!: number
+	public quantidade!: number
+	public nome!: string
+	public marca!: string
+	public fabricante!: string
+	public descricao!: string
+	public urgencia!: boolean
+	public observacao!: string
+	public ativo!: boolean
+	public cnpj!: string
+	public codigoFuncionario!: number
 }

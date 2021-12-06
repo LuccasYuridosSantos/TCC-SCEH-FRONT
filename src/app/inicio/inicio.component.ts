@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { RecursoHospitalar } from '../model/RecursoHospitalar';
 import { RecursoRequest } from '../model/RecursoRequest';
 import { Reserva } from '../model/Reserva';
+import { SolicitacaoRequest } from '../model/SolicitacaoRequest';
 import { AuthService } from '../service/auth.service';
 import { RecursoService } from '../service/recurso.service';
 import { ReservaService } from '../service/reserva.service';
@@ -23,6 +24,8 @@ export class InicioComponent implements OnInit {
   listaRecursoDoHospital: RecursoHospitalar[]
   listaReserva: Reserva[]
   listaSolicitacao: RecursoHospitalar[]
+  solicitacaoRequest: SolicitacaoRequest = new SolicitacaoRequest()
+
 
 
 
@@ -31,7 +34,7 @@ export class InicioComponent implements OnInit {
     private auth: AuthService,
     private recursoService: RecursoService,
     private reservaService: ReservaService,
-    private solicitaService: SolicitacaoService
+    private solicitacaoService: SolicitacaoService
   ) { }
 
   ngOnInit() {
@@ -62,7 +65,7 @@ export class InicioComponent implements OnInit {
   }
 
   buscarTodasSolicitacaoDoHospital() {
-    this.solicitaService.getAllSolicitacaoPorHospital(environment.cnpj).subscribe((resp: RecursoHospitalar[]) => {
+    this.solicitacaoService.getAllSolicitacaoPorHospital(environment.cnpj).subscribe((resp: RecursoHospitalar[]) => {
       this.listaSolicitacao = resp
     })
   }
@@ -82,12 +85,16 @@ export class InicioComponent implements OnInit {
       || this.recursoRequest.lote == null || this.recursoRequest.marca == null || this.recursoRequest.quantidade == null || this.recursoRequest.nome == null) {
 
       alert('Preencha todos os campos!')
-      this.recursoRequest = new RecursoRequest()
+      
 
     } else if (this.dataDeValidadeEInvalida(this.recursoRequest.dataFabricacao, this.recursoRequest.dataValidade)) {
 
       alert('Data de validade não pode ser menor ou igual a de fabricação!')
-      this.recursoRequest = new RecursoRequest()
+      
+
+    }else if (this.recursoRequest.quantidade <= 0) {
+
+      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
 
     } else {
       this.recursoService.postRecurso(this.recursoRequest).subscribe((resp: RecursoRequest) => {
@@ -117,6 +124,37 @@ export class InicioComponent implements OnInit {
       return true
     }
     return false
+  }
+
+
+  cadastrarSolicitacao(){
+    this.solicitacaoRequest.cnpj = environment.cnpj
+    this.solicitacaoRequest.codigoFuncionario = environment.id
+    this.solicitacaoRequest.ativo = true
+
+    if (this.solicitacaoRequest.quantidade == null || this.solicitacaoRequest.nome == null ||
+      this.solicitacaoRequest.marca == null || this.solicitacaoRequest.fabricante == null ||
+      this.solicitacaoRequest.descricao == null) {
+      alert('Preeencha todos os campos')
+    } else if (this.solicitacaoRequest.quantidade <= 0) {
+      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
+    } else {
+      this.solicitacaoService.postSolicitacao(this.solicitacaoRequest).subscribe((resp: SolicitacaoRequest) => {
+        this.solicitacaoRequest = resp
+        alert('Solicitação Cadastrada com Sucesso')
+        this.router.navigate(['/inicio'])
+        this.solicitacaoRequest =  new SolicitacaoRequest()
+      })
+    }
+
+  }
+
+  urgenteTrue() {
+    this.solicitacaoRequest.urgencia = true
+  }
+
+  urgenteFalse() {
+    this.solicitacaoRequest.urgencia = false
   }
 
 }

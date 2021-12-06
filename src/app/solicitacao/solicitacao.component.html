@@ -1,1 +1,98 @@
-<p>solicitacao works!</p>
+<div class="container-fluid">
+
+    <div class="row bg-secondary">
+        <div class="col-md-12 text-white">
+
+
+            <a routerLink='/inicio' class="text-white text-left">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i> início
+            </a>
+
+            <h1 class="fs-54 text-center">Solicitações</h1>
+            <h5 class="fs-18 text-center">Veja aqui todos as Solicitações cadastradas</h5>
+
+            <div class="row d-flex justify-content-center mt-4 mb-5">
+                <div class="col-md-3">
+                    <form class="d-flex">
+                        <input [(ngModel)]='nomebusca' class="form-control me-2" type="text" name="buscarNome"
+                            id="nomebusca" placeholder="Digite o nome da solicitação">
+                        <button (click)='buscarTodosPorNome()' class="btn btn-outline-light"
+                            type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="text-center">Todas as Solicitações</h2>
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-5 d-flex justify-content-center">
+        <div class="col-md-8">
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-3">
+                <div class="col mb-3" *ngFor='let solicitacao of listaSolicitacao' style="width: 18rem;">
+                    <div class="card border-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center">
+                            <h5>{{solicitacao.nome}}</h5>
+                        </div>
+                        <div class="card-body text-primary">
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Quantidade:</label></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{solicitacao.quantidade}}</p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Marca:</label></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{solicitacao.marca}}</p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>fabricante:</label></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{solicitacao.fabricante}}</p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Descrição:</label></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{solicitacao.descricao}}</p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Urgência:</label></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{solicitacao.urgencia}}</p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Solicitante:</label></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{solicitacao.funcionario.nome}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-success me-2" [routerLink]="['/solicitacao-recurso', solicitacao.codigoRecurso]">
+                                Criar Recurso
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+</div>

@@ -39,19 +39,17 @@ export class RecursoEditComponent implements OnInit {
       || this.recursoRequest.lote == null || this.recursoRequest.marca == null || this.recursoRequest.quantidade == null || this.recursoRequest.nome == null) {
 
       alert('Preencha todos os campos!')
-      this.recursoRequest = new RecursoRequest()
 
     } else if (this.dataDeValidadeEInvalida(this.recursoRequest.dataFabricacao, this.recursoRequest.dataValidade)) {
 
       alert('Data de validade não pode ser menor ou igual a de fabricação!')
-      this.recursoRequest = new RecursoRequest()
 
+    }else if(this.recursoRequest.quantidade <= 0){
+      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
     } else {
       this.recursoService.putRecurso(this.recursoRequest).subscribe((resp: RecursoRequest) => {
         this.recursoRequest = resp
-        console.log(this.recursoRequest)
         alert('Recurso Atualizado com Sucesso')
-        this.recursoRequest = new RecursoRequest()
         this.router.navigate(['/inicio'])
       })
 

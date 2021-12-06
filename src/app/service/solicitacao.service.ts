@@ -18,6 +18,14 @@ export class SolicitacaoService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  getAll(): Observable<RecursoHospitalar[]>{
+    return this.http.get<RecursoHospitalar[]>("http://localhost:8080/solicitacao", this.token)
+  }
+
+  getAllPorNome(nome: string):Observable<RecursoHospitalar[]>{
+    return this.http.get<RecursoHospitalar[]>(`http://localhost:8080/solicitacao/nome/${nome}`, this.token)
+  }
+
   getByidSolicitacao(id: number) : Observable<RecursoHospitalar>{
     return this.http.get<RecursoHospitalar>(`http://localhost:8080/solicitacao/id/${id}`, this.token)
   }
