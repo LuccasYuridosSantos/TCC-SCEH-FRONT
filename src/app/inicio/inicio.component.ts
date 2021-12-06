@@ -50,9 +50,8 @@ export class InicioComponent implements OnInit {
   }
 
   buscarTodosRecursos() {
-    this.recursoService.getAllRecurso().subscribe((resp: RecursoHospitalar[]) => {
+    this.recursoService.getAllRecurso(environment.cnpj).subscribe((resp: RecursoHospitalar[]) => {
       this.listaRecurso = resp
-      console.log(this.listaRecurso)
     })
   }
 
@@ -63,7 +62,7 @@ export class InicioComponent implements OnInit {
   }
 
   buscarTodasSolicitacaoDoHospital() {
-    this.solicitaService.getAllReservaPorHospital(environment.cnpj).subscribe((resp: RecursoHospitalar[]) => {
+    this.solicitaService.getAllSolicitacaoPorHospital(environment.cnpj).subscribe((resp: RecursoHospitalar[]) => {
       this.listaSolicitacao = resp
     })
   }
@@ -78,8 +77,6 @@ export class InicioComponent implements OnInit {
 
     this.recursoRequest.cnpj = environment.cnpj
     this.recursoRequest.codigoFuncionario = environment.id
-
-    console.log(this.recursoRequest.codigoFuncionario)
 
     if (this.recursoRequest.dataFabricacao == null || this.recursoRequest.dataValidade == null || this.recursoRequest.fabricante == null
       || this.recursoRequest.lote == null || this.recursoRequest.marca == null || this.recursoRequest.quantidade == null || this.recursoRequest.nome == null) {

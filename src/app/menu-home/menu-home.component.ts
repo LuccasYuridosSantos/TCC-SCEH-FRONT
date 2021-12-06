@@ -20,12 +20,13 @@ export class MenuHomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
-  entrar(){
-    this.auth.entrar(this.funcionarioLogin).subscribe((resp: FuncionarioLogin)=>{
+  entrar() {
+    this.auth.entrar(this.funcionarioLogin).subscribe((resp: FuncionarioLogin) => {
       this.funcionarioLogin = resp
+
 
       environment.token = this.funcionarioLogin.token
       environment.nome = this.funcionarioLogin.nome
@@ -36,8 +37,11 @@ export class MenuHomeComponent implements OnInit {
 
       this.router.navigate(['/inicio'])
 
-    }, erro =>{
-      if(erro.status == 500){
+
+
+
+    }, erro => {
+      if (erro.status == 500 || erro.status == 401) {
         alert('Usuário ou senha estão incorretos!')
       }
     })

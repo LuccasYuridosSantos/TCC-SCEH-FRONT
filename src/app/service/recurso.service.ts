@@ -19,13 +19,17 @@ export class RecursoService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  getByIdRecurso(id: number) : Observable<RecursoHospitalar>{
+    return this.http.get<RecursoHospitalar>(`http://localhost:8080/recurso/id/${id}`, this.token)
+  }
 
-  getAllRecurso() : Observable<RecursoHospitalar[]>{
-    return this.http.get<RecursoHospitalar[]>('http://localhost:8080/recurso', this.token)
+
+  getAllRecurso(cnpj: string) : Observable<RecursoHospitalar[]>{
+    return this.http.get<RecursoHospitalar[]>(`http://localhost:8080/recurso/outros/${cnpj}`, this.token)
   }
 
   getAllRecursoPorHospital(cnpj: string):Observable<RecursoHospitalar[]>{
-    return this.http.get<RecursoHospitalar[]>('http://localhost:8080/recurso/hospital/'+cnpj, this.token)
+    return this.http.get<RecursoHospitalar[]>(`http://localhost:8080/recurso/hospital/${cnpj}`, this.token)
   
   }
 
@@ -33,11 +37,11 @@ export class RecursoService {
     return this.http.post<RecursoRequest>('http://localhost:8080/recurso/cadastrar',recursoRequest, this.token)
   }
 
-  putRecurso(recursoRequest: RecursoRequest): Observable<RecursoRequest>{
-    return this.http.post<RecursoRequest>('http://localhost:8080/recurso/atualizar',recursoRequest, this.token)
+  putRecurso(request: RecursoRequest): Observable<RecursoRequest>{
+    return this.http.put<RecursoRequest>('http://localhost:8080/recurso/atualizar',request, this.token)
   }
 
-  deleteRecurso(id: number): Observable<RecursoRequest>{
-    return this.http.delete<RecursoRequest>('http://localhost:8080/recurso/deletar/'+id, this.token)
+  deleteRecurso(id: number){
+    return this.http.delete(`http://localhost:8080/recurso/deletar/${id}`, this.token)
   }
 }

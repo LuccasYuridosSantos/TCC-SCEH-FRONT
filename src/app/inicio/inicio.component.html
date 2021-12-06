@@ -40,11 +40,11 @@
                 data-bs-target="#nav-recursoHospital" type="button" role="tab" aria-controls="nav-recursoHospital"
                 aria-selected="false">Recursos do Hospital</button>
 
-            <button class="nav-link" id="nav-solicitacao-tab" data-bs-toggle="tab" data-bs-target="#nav-solicitacao"
-                type="button" role="tab" aria-controls="nav-solicitacao" aria-selected="false">Solicitações</button>
+            <button (click)='buscarTodasSolicitacaoDoHospital()' class="nav-link" id="nav-solicitacao-tab" data-bs-toggle="tab" data-bs-target="#nav-solicitacao"
+                type="button" role="tab" aria-controls="nav-solicitacao" aria-selected="false">Solicitações do Hospital</button>
 
             <button (click)='buscarTodasReservasHospital()' class="nav-link" id="nav-reservas-tab" data-bs-toggle="tab" data-bs-target="#nav-reservas"
-                type="button" role="tab" aria-controls="nav-reservas" aria-selected="false">Reservas</button>
+                type="button" role="tab" aria-controls="nav-reservas" aria-selected="false">Reservas do Hospital</button>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -57,22 +57,37 @@
                             <h5>{{recurso.nome}}</h5>
                         </div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Sobre Recurso:</h5>
-                            <label>Quantidade:</label>
-                            <p class="card-text"> {{recurso.quantidade}}</p>
-                            <label>Marca:</label>
-                            <p class="card-text">{{recurso.marca}}</p>
-                            <label>Fabricante:</label>
-                            <p class="card-text"> {{recurso.fabricante}}</p>
-                            <label>Data de Fabricação:</label>
-                            <p class="card-text"> {{recurso.dataFabricacao}}</p>
-                            <label>Data de Validade:</label>
-                            <p class="card-text"> {{recurso.dataValidade}}</p>
-                            <label>Descrição:</label>
-                            <p class="card-text"> {{recurso.descricao}}</p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Quantidade:</label></li>
+                                <li class="list-inline-item "><p class="card-text"> {{recurso.quantidade}}</p></li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Marca:</label></li>
+                                <li class="list-inline-item"><p class="card-text"> {{recurso.marca}}</p></li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Fabricante:</label></li>
+                                <li class="list-inline-item"><p class="card-text"> {{recurso.fabricante}}</p></li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold "><label>Fabricação:</label></li>
+                                <li class="list-inline-item"><p class="card-text"> {{recurso.dataFabricacao}}</p></li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Validade:</label></li>
+                                <li class="list-inline-item"><p class="card-text"> {{recurso.dataValidade}}</p></li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Descrição:</label></li>
+                                <li class="list-inline-item"><p class="card-text text-wrap"> {{recurso.descricao}}</p></li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item font-bold"><label>Hospital:</label></li>
+                                <li class="list-inline-item"><p class="card-text text-wrap"> {{recurso.hospital.razaoSocial}}</p></li>
+                            </ul>
                         </div>
                         <div *ngIf='usuarioComPermissao()' class="card-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-success me-2">
+                            <button type="button" class="btn btn-success me-2" [routerLink]="['/reserva', recurso.codigoRecurso]">
                                 Reservar
                             </button>
                         </div>
@@ -108,10 +123,10 @@
                         <td>{{recurso.lote}}</td>
                         <td>{{recurso.descricao}}</td>
                         <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger me-2">
+                            <button type="button" class="btn btn-danger me-2 " [routerLink]="['/recurso-delete', recurso.codigoRecurso]">
                                 Deletar
                             </button>
-                            <button type="button" class="btn btn-info">
+                            <button type="button" class="btn btn-info" [routerLink]="['/recurso-edit', recurso.codigoRecurso]">
                                 Editar
                             </button>
                         </td>
@@ -128,29 +143,30 @@
                     <tr class="table-custom-header text-center">
                         <th scope="col">Nome</th>
                         <th scope="col">Quantidade</th>
-                        <th scope="col">Data Reserva</th>
-                        <th scope="col">Data Retirada</th>
-                        <th scope="col">Local Entrega</th>
-                        <th scope="col">Entregador</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">fabricante</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Urgência</th>
                         <th scope="col">Solicitante</th>
-                        <th scope="col">Data Entrega</th>
-                        <th scope="col">Nome Recurso</th>
+                        <th scope="col">Observação</th>
                         <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
                     </tr>
                 </thead>
                 <tbody >
-                    <tr *ngFor='let reserva of listaReserva' class="text-center">
-                        <td>{{reserva.codigoReserva}}</td>
-                        <td>{{reserva.quantidade}}</td>
-                        <td>{{reserva.dataReserva}}</td>
-                        <td>{{reserva.dataRetirada}}</td>
-                        <td>{{reserva.localEntrega}}</td>
-                        <td>{{reserva.entregador}}</td>
-                        <td>{{reserva.solicitante}}</td>
-                        <td>{{reserva.dataEntrega}}</td>
-                        <td>{{reserva.recursoHospitalar.nome}}</td>                        
+                    <tr *ngFor='let solicitacao of listaSolicitacao' class="text-center">
+                        <td>{{solicitacao.nome}}</td>
+                        <td>{{solicitacao.quantidade}}</td>
+                        <td>{{solicitacao.marca}}</td>
+                        <td>{{solicitacao.fabricante}}</td>
+                        <td>{{solicitacao.descricao}}</td>
+                        <td>{{solicitacao.urgencia}}</td>
+                        <td>{{solicitacao.funcionario.nome}}</td>
+                        <td>{{solicitacao.observacao}}</td>
                         <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-info">
+                            <button type="button" class="btn btn-danger me-2" [routerLink]="['/solicitacao-delete', solicitacao.codigoRecurso]">
+                                Deletar
+                            </button>
+                            <button type="button" class="btn btn-info" [routerLink]="['/solicitacao-edit', solicitacao.codigoRecurso]">
                                 Editar
                             </button>
                         </td>
@@ -169,7 +185,6 @@
                         <th scope="col">Quantidade</th>
                         <th scope="col">Data Reserva</th>
                         <th scope="col">Data Retirada</th>
-                        <th scope="col">Local Entrega</th>
                         <th scope="col">Entregador</th>
                         <th scope="col">Solicitante</th>
                         <th scope="col">Data Entrega</th>
@@ -183,12 +198,11 @@
                         <td>{{reserva.quantidade}}</td>
                         <td>{{reserva.dataReserva}}</td>
                         <td>{{reserva.dataRetirada}}</td>
-                        <td>{{reserva.localEntrega}}</td>
                         <td>{{reserva.entregador}}</td>
                         <td>{{reserva.solicitante}}</td>
                         <td>{{reserva.dataEntrega}}</td>
                         <td>{{reserva.recursoHospitalar.nome}}</td>                        
-                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
+                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center" [routerLink]="['/reserva-edit', reserva.codigoReserva]">
                             <button type="button" class="btn btn-info">
                                 Editar
                             </button>

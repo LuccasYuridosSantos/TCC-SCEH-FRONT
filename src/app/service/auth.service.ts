@@ -33,10 +33,6 @@ export class AuthService {
     return this.http.post<HospitalRequest>('http://localhost:8080/hospital/cadastrar', hospitalReq)
   }
 
-  buscarHospitalPorFuncionario(funcionario: Funcionario): Observable<Funcionario>{
-    return this.http.post<Funcionario>('http://localhost:8080/funcionario/cadastrar', funcionario)
-  }
-
   cadastrarRecurso(recursoReq: RecursoRequest): Observable<RecursoRequest> {
     return this.http.post<RecursoRequest>('http://localhost:8080/recurso/cadastrar', recursoReq, this.token)
   }

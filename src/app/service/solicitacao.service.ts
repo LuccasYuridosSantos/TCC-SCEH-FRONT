@@ -18,20 +18,23 @@ export class SolicitacaoService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  getAllReservaPorHospital(cnpj: string):Observable<RecursoHospitalar[]>{
-    return this.http.get<RecursoHospitalar[]>('http://localhost:8080/solicitacao/hospital/'+cnpj, this.token)
-  
+  getByidSolicitacao(id: number) : Observable<RecursoHospitalar>{
+    return this.http.get<RecursoHospitalar>(`http://localhost:8080/solicitacao/id/${id}`, this.token)
   }
 
-  postReserva(solicitacao: SolicitacaoRequest): Observable<SolicitacaoRequest>{
+  getAllSolicitacaoPorHospital(cnpj: string):Observable<RecursoHospitalar[]>{
+    return this.http.get<RecursoHospitalar[]>(`http://localhost:8080/solicitacao/hospital/${cnpj}`, this.token)
+  }
+
+  postSolicitacao(solicitacao: SolicitacaoRequest): Observable<SolicitacaoRequest>{
     return this.http.post<SolicitacaoRequest>('http://localhost:8080/solicitacao/cadastrar',solicitacao, this.token)
   }
 
-  putReserva(solicitacao: SolicitacaoRequest): Observable<SolicitacaoRequest>{
+  putSolicitacao(solicitacao: SolicitacaoRequest): Observable<SolicitacaoRequest>{
     return this.http.post<SolicitacaoRequest>('http://localhost:8080/solicitacao/atualizar',solicitacao, this.token)
   }
 
-  deleteReserva(id: number): Observable<RecursoHospitalar>{
-    return this.http.post<RecursoHospitalar>('http://localhost:8080/solicitacao/deletar/'+id, this.token)
+  deleteReserva(id: number){
+    return this.http.delete(`http://localhost:8080/solicitacao/deletar/${id}`, this.token)
   }
 }

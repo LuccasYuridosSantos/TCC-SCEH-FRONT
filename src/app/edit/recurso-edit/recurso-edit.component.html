@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6 mt-5">
+
+            <div class="col-md-10 justify-content-center m-auto">
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Nome</label>
+                    <input [(ngModel)]='recursoRequest.nome' class="form-control" type="text" name="nomeRecurso"
+                        id="nomeRecurso" placeholder="Digite o nome do recurso">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Marca</label>
+                    <input [(ngModel)]='recursoRequest.marca' class="form-control" type="text" name="marcaRecurso"
+                        id="marcaRecurso" placeholder="Digite a marca do recurso">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Quantidade</label>
+                    <input [(ngModel)]='recursoRequest.quantidade' class="form-control" type="number"
+                        name="quantidadeRecurso" id="quantidadeRecurso" placeholder="Informe a quantidade">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Fabricante</label>
+                    <input [(ngModel)]='recursoRequest.fabricante' class="form-control" type="text"
+                        name="fabricante" id="fabricante" placeholder="informe o fabricante">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Lote</label>
+                    <input [(ngModel)]='recursoRequest.lote' class="form-control" type="text" name="lote" id="lote"
+                        placeholder="informe o lote">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Descricao</label>
+                    <input [(ngModel)]='recursoRequest.descricao' class="form-control" type="text" name="descricao"
+                        id="descricao" placeholder="Descrição">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Data de Fabricação</label>
+                    <input class="form-control" [(ngModel)]='recursoRequest.dataFabricacao' type="date"
+                        name="dataFabricacao" id="dataFabricacao">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="usuario" class="mb-2">Data de Validade</label>
+                    <input [(ngModel)]='recursoRequest.dataValidade' class="form-control" type="date"
+                        name="dataValidade" id="dataValidade">
+                </div>
+    
+                <div class=" mt-5 mb-5 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-danger me-4" routerLink='/inicio'>Cancelar</button>
+                    <button class="btn btn-success" (click)='atualizar()'>Atualizar</button>
+                </div>
+            </div>
+
+            
+
+        </div>
+        <div class="col-md-6 d-sm-flex align-items-center justify-content-center h-100" >
+            <img src="../../../assets/img/Medicine-bro.png" alt="imagem" class="img-fluid  d-sm-block h-100 w-75">
+        </div>
+    </div>
+</div>

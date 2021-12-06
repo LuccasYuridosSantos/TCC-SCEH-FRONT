@@ -1,3 +1,6 @@
+import { Funcionario } from "./Funcionario"
+import { Hospital } from "./Hospital"
+
 export class RecursoHospitalar {
     public codigoRecurso!: number
     public quantidade!: number
@@ -13,4 +16,6 @@ export class RecursoHospitalar {
     public urgencia!: boolean
     public observacao!: string
     public ativo!: boolean
+    public funcionario!: Funcionario
+    public hospital!: Hospital
 }

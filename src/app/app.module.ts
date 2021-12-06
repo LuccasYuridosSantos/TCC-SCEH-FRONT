@@ -15,6 +15,14 @@ import { ContatoComponent } from './contato/contato.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 import { SubmenuComponent } from './submenu/submenu.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { ReservaComponent } from './reserva/reserva.component';
+import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
+import { ReservaEditComponent } from './edit/reserva-edit/reserva-edit.component';
+import { ReservaDeleteComponent } from './edit/reserva-delete/reserva-delete.component';
+import { SolicitacaoEditComponent } from './edit/solicitacao-edit/solicitacao-edit.component';
+import { SolicitacaoDeleteComponent } from './edit/solicitacao-delete/solicitacao-delete.component';
+import { RecursoDeleteComponent } from './edit/recurso-delete/recurso-delete.component';
+import { RecursoEditComponent } from './edit/recurso-edit/recurso-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +35,15 @@ import { InicioComponent } from './inicio/inicio.component';
     ContatoComponent,
     SobreNosComponent,
     SubmenuComponent,
-    InicioComponent
+    InicioComponent,
+    ReservaComponent,
+    SolicitacaoComponent,
+    ReservaEditComponent,
+    ReservaDeleteComponent,
+    SolicitacaoEditComponent,
+    SolicitacaoDeleteComponent,
+    RecursoDeleteComponent,
+    RecursoEditComponent
   ],
   imports: [
     BrowserModule,
