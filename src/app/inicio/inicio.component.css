@@ -23,3 +23,23 @@
 .font-bold{
     font-weight: bold;
 }
+
+.div-hospital{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 30px;
+}
+
+.div-usuario{
+    text-align: center;
+    font-size: 45px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.titulos-usuario{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}

@@ -14,6 +14,8 @@ import { InicioComponent } from './inicio/inicio.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { HomeComponent } from './home/home.component';
 import { HometwoComponent } from './hometwo/hometwo.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HometwoComponent } from './hometwo/hometwo.component';
     InicioComponent,
     PesquisaComponent,
     HomeComponent,
-    HometwoComponent
+    HometwoComponent,
+    EditarUsuarioComponent,
+    GerenciamentoComponent
   ],
   imports: [
     BrowserModule,

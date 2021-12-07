@@ -1,0 +1,190 @@
+<div class="div-usuario">
+    GERENCIAR HOSPITAL
+</div>
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                EDITAR HOSPITAL
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <br>
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label for="codigo" class="form-label">Código</label>
+                    <input type="text" class="form-control" id="codigo" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="cnpj" class="form-label">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpj" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="razaoSocial" class="form-label">Razão Social</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="razaoSocial"
+                            aria-describedby="inputGroupPrepend2" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="nomeFantasia" class="form-label">Nome Fantasia</label>
+                    <input type="text" class="form-control" id="nomeFantasia" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="tipo" class="form-label">Tipo</label>
+                    <input type="text" class="form-control" id="tipo" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" required>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-outline-success botoes-usuario" type="submit">Atualizar Hospital</button>
+                </div>
+            </form>
+
+            <br>
+        </div>
+    </div>
+</div>
+<!-- Fim da sessão de gerenciar hospital -->
+
+<!-- Início gerenciamento do usuário -->
+<div class="div-usuario">
+    GERENCIAR USUÁRIO
+</div>
+
+<!-- Início acordeão com os formulários -->
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                CRIAR USUÁRIO
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+
+            <br>
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label for="criarNome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="criarNome" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="criarMatricula" class="form-label">Matrícula</label>
+                    <input type="text" class="form-control" id="criarMatricula" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="criarUsuario" class="form-label">Usuário</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="criarUsuario"
+                            aria-describedby="inputGroupPrepend2" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="criarSenha" class="form-label">Senha</label>
+                    <input type="text" class="form-control" id="criarSenha" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="criarCodigoHospital" class="form-label">Código Hospital</label>
+                    <input type="text" class="form-control" id="criarCodigoHospital" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="criarCodigoPermissao" class="form-label">Código Permissão</label>
+                    <input type="text" class="form-control" id="criarCodigoPermissao" required>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-outline-success botoes-usuario" type="submit">Criar Usuário</button>
+                </div>
+            </form>
+
+            <br>
+
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                EDITAR USUÁRIO
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+            data-bs-parent="#accordionFlushExample">
+
+            <br>
+
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label for="editarNome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="editarNome" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="editarMatricula" class="form-label">Matrícula</label>
+                    <input type="text" class="form-control" id="editarMatricula" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="editarUsuario" class="form-label">Usuário</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="editarUsuario"
+                            aria-describedby="inputGroupPrepend2" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="editarSenha" class="form-label">Senha</label>
+                    <input type="text" class="form-control" id="editarSenha" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="editarCodigoHospital" class="form-label">Código Hospital</label>
+                    <input type="text" class="form-control" id="editarCodigoHospital" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="editarCodigoPermissao" class="form-label">Código Permissão</label>
+                    <input type="text" class="form-control" id="editarCodigoPermissao" required>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-outline-success" type="submit">Editar
+                        Usuário</button>
+                </div>
+            </form>
+
+            <br>
+
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                EXCLUIR USUÁRIO
+            </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+            data-bs-parent="#accordionFlushExample">
+
+            <br>
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label for="excluirId" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="excluirId" value="" required>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-outline-danger justify-content-center" type="submit">Excluir
+                        Usuário</button>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+<!-- Fim acordeão com os formulários -->
+<!-- Fim gerenciamento do usuário -->
