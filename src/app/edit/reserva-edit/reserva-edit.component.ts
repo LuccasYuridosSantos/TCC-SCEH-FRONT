@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Reserva } from 'src/app/model/Reserva';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { ReservaService } from 'src/app/service/reserva.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,7 +18,8 @@ export class ReservaEditComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private reservaService: ReservaService
+    private reservaService: ReservaService,
+    private alertasService: AlertasService
   ) { }
 
   ngOnInit() {
@@ -34,21 +36,22 @@ export class ReservaEditComponent implements OnInit {
   atualizar() {
 
     if (this.reserva.quantidade == null || this.reserva.dataEntrega == null) {
-      alert('Preencha todos os campos')
+      this.alertasService.showAlertInfo('Preencha todos os campos')
     }else if (this.validarData(this.reserva.dataReserva, this.reserva.dataEntrega)) {
-      alert('A data de entrega não pode ser menor que data da reserva')
+      this.alertasService.showAlertInfo('A data de entrega não pode ser menor que data da reserva')
     }else {
       
       this.reservaService.putReserva(this.reserva).subscribe((resp: Reserva) => {
-        alert('Reserva atuallizada com sucesso!')
+        this.alertasService.showAlertSuccess('Reserva atuallizada com sucesso!')
         this.router.navigate(['/inicio'])
         this.reserva = new Reserva()
       }, error => {
         if (error.status == 500) {
-          alert('Ocorreu um erro, tente novamente mais tarde')
+          this.alertasService.showAlertDanger('Ocorreu um erro, tente novamente mais tarde')
 
-        }else if(error.status == 400 ){
-          alert('Quantidade da reserva não é validade')
+        }
+        if (error.status == 400) {
+          this.alertasService.showAlertInfo('Dados invalidos')
         }
       })
     }

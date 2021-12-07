@@ -5,6 +5,7 @@ import { FuncionarioLogin } from '../model/FuncionarioLogin';
 import { Hospital } from '../model/Hospital';
 import { HospitalRequest } from '../model/HospitalRequest';
 import { Permissao } from '../model/Permissao';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class CadastrarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alertasService: AlertasService
   ) { }
 
   ngOnInit() {
@@ -43,20 +45,18 @@ export class CadastrarComponent implements OnInit {
 
     if (this.funcionario.matricula == null || this.funcionario.hospital == null ||
       this.funcionario.nome == null || this.funcionario.senha == null || this.funcionario.username == null) {
-      alert('Preencha todos os campos!')
+      this.alertasService.showAlertInfo('Preencha todos os campos!')
     } else if (this.confimarSenha != this.funcionario.senha) {
-      console.log(this.confimarSenha)
-      console.log(this.funcionario.senha)
-      alert('As senhas estão incorretas!')
+      this.alertasService.showAlertInfo('As senhas estão incorretas!')
     } else {
       this.authService.cadastrarFuncionario(this.funcionario).subscribe((resp: Funcionario) => {
         this.funcionario = resp
         this.router.navigate(['/entrar'])
-        alert('Funcionario Cadastrado com sucesso!!')
+        this.alertasService.showAlertSuccess('Funcionario Cadastrado com sucesso!!')
 
       }, erro => {
         if (erro.status == 500) {
-          alert('Ocorreu um erro, tente novamente mais tarde')
+          this.alertasService.showAlertDanger('Ocorreu um erro, tente novamente mais tarde')
         }
       })
     }
@@ -66,17 +66,18 @@ export class CadastrarComponent implements OnInit {
 
     if(this.hospitalReq == null || this.hospitalReq.cnpj == null ||this.hospitalReq.nome == null || this.hospitalReq.ddd == null 
       || this.hospitalReq.observacao == null || this.hospitalReq.telefone == null || this.hospitalReq.tipo == null){
-        alert('Preencha todos os campos!')
+        this.alertasService.showAlertInfo('Preencha todos os campos!')
     }else{
       this.authService.cadastrarHospital(this.hospitalReq).subscribe((resp: HospitalRequest) => {
-        console.log(resp)
-      
         this.router.navigate(['/entrar'])
-        alert('Hospital Cadastrado com sucesso!!')
+        this.alertasService.showAlertSuccess('Hospital Cadastrado com sucesso!!')
 
       }, erro => {
         if (erro.status == 500) {
-          alert('Ocorreu um erro, tente novamente mais tarde')
+          this.alertasService.showAlertDanger('Ocorreu um erro, tente novamente mais tarde')
+        }
+        if (erro.status == 400) {
+          this.alertasService.showAlertInfo('Dados invalidos')
         }
       })
     }
@@ -92,7 +93,6 @@ export class CadastrarComponent implements OnInit {
     }else{
       this.hospitalReq.tipo = 'PUBLICO'
     }
-    console.log(this.hospitalReq.tipo)
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecursoHospitalar } from 'src/app/model/RecursoHospitalar';
 import { RecursoRequest } from 'src/app/model/RecursoRequest';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { RecursoService } from 'src/app/service/recurso.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -19,7 +20,8 @@ export class RecursoEditComponent implements OnInit {
   constructor(
     private router: Router,
     private recursoService: RecursoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertasService: AlertasService
     
     ) { }
 
@@ -38,19 +40,26 @@ export class RecursoEditComponent implements OnInit {
     if (this.recursoRequest.dataFabricacao == null || this.recursoRequest.dataValidade == null || this.recursoRequest.fabricante == null
       || this.recursoRequest.lote == null || this.recursoRequest.marca == null || this.recursoRequest.quantidade == null || this.recursoRequest.nome == null) {
 
-      alert('Preencha todos os campos!')
+      this.alertasService.showAlertInfo('Preencha todos os campos!')
 
     } else if (this.dataDeValidadeEInvalida(this.recursoRequest.dataFabricacao, this.recursoRequest.dataValidade)) {
 
-      alert('Data de validade não pode ser menor ou igual a de fabricação!')
+      this.alertasService.showAlertInfo('Data de validade não pode ser menor ou igual a de fabricação!')
 
     }else if(this.recursoRequest.quantidade <= 0){
-      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
+      this.alertasService.showAlertInfo('Quantidade invalida, quantidade precisa ser maior do que zero')
     } else {
       this.recursoService.putRecurso(this.recursoRequest).subscribe((resp: RecursoRequest) => {
         this.recursoRequest = resp
-        alert('Recurso Atualizado com Sucesso')
+        this.alertasService.showAlertSuccess('Recurso Atualizado com Sucesso')
         this.router.navigate(['/inicio'])
+      }, erro => {
+        if (erro.status == 500) {
+          this.alertasService.showAlertDanger('Ocorreu um erro, tente novamente mais tarde')
+        }
+        if (erro.status == 400) {
+          this.alertasService.showAlertInfo('Dados invalidos')
+        }
       })
 
     }

@@ -21,6 +21,8 @@ import { SolicitacaoDeleteComponent } from './edit/solicitacao-delete/solicitaca
 import { RecursoDeleteComponent } from './edit/recurso-delete/recurso-delete.component';
 import { RecursoEditComponent } from './edit/recurso-edit/recurso-edit.component';
 import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicitacao-recurso.component';
+import { AlertasComponent } from './alertas/alertas.component';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -39,18 +41,21 @@ import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicita
     SolicitacaoDeleteComponent,
     RecursoDeleteComponent,
     RecursoEditComponent,
-    SolicitacaoRecursoComponent
+    SolicitacaoRecursoComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy, 
-    useClass: HashLocationStrategy
-  }],
+    useClass: HashLocationStrategy,
+    
+  }, BsModalRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

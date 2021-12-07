@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Hospital } from '../model/Hospital';
 import { RecursoHospitalar } from '../model/RecursoHospitalar';
 import { Reserva } from '../model/Reserva';
+import { AlertasService } from '../service/alertas.service';
 import { HospitalService } from '../service/hospital.service';
 import { RecursoService } from '../service/recurso.service';
 import { ReservaService } from '../service/reserva.service';
@@ -26,7 +27,8 @@ export class ReservaComponent implements OnInit {
     private reservaService: ReservaService,
     private recursoService: RecursoService,
     private routeActive: ActivatedRoute,
-    private hospitalService: HospitalService
+    private hospitalService: HospitalService,
+    private alertasService: AlertasService
   ) { }
 
   ngOnInit(){
@@ -61,21 +63,24 @@ export class ReservaComponent implements OnInit {
     this.reserva.localEntrega = this.registrarEndereco(this.reserva.hospital)
 
     if(this.reserva.quantidade == null || this.reserva.dataRetirada == null || this.reserva.entregador == null) {
-      alert('Preencha todos os campos')
+      this.alertasService.showAlertInfo('Preencha todos os campos')
     }else if(this.recurso.quantidade < this.reserva.quantidade){
-      alert('Quantidade da Reserva não pode ser maior que do recurso')
+      this.alertasService.showAlertInfo('Quantidade da Reserva não pode ser maior que do recurso')
     }else if(this.validarData(this.reserva.dataReserva, this.reserva.dataRetirada)){
-      alert('Data da Retirada tem que ser maior ou igual a data atual')
+      this.alertasService.showAlertInfo('Data da Retirada tem que ser maior ou igual a data atual')
     }else{
 
       this.reservaService.postReserva(this.reserva).subscribe((resp: Reserva)=>{
         this.reserva = resp
-        alert('Reserva Feita com Sucesso')
+        this.alertasService.showAlertSuccess('Reserva Feita com Sucesso')
         this.router.navigate(['/inicio'])
 
       }, erro => {
         if (erro.status == 500) {
           alert('Ocorreu um erro, tente novamente mais tarde')
+        }
+        if (erro.status == 400) {
+          alert('Dados invalidos')
         }
       })
     }
@@ -89,7 +94,7 @@ export class ReservaComponent implements OnInit {
         soma += value.quantidade
       })
       if(soma >= this.recurso.quantidade){
-        alert('O recurso atingiu o valor maximo de reservas')
+        this.alertasService.showAlertInfo('O recurso atingiu o valor maximo de reservas')
         this.router.navigate(['/inicio'])
       }
 

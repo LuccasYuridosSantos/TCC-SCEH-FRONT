@@ -6,6 +6,7 @@ import { RecursoHospitalar } from '../model/RecursoHospitalar';
 import { RecursoRequest } from '../model/RecursoRequest';
 import { Reserva } from '../model/Reserva';
 import { SolicitacaoRequest } from '../model/SolicitacaoRequest';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { RecursoService } from '../service/recurso.service';
 import { ReservaService } from '../service/reserva.service';
@@ -34,7 +35,8 @@ export class InicioComponent implements OnInit {
     private auth: AuthService,
     private recursoService: RecursoService,
     private reservaService: ReservaService,
-    private solicitacaoService: SolicitacaoService
+    private solicitacaoService: SolicitacaoService,
+    private alertasAlertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -42,7 +44,7 @@ export class InicioComponent implements OnInit {
     window.scroll(0, 0)
 
     if (environment.token == '') {
-      alert('Sua seção expirou, faça o login novamente')
+      this.alertasAlertas.showAlertInfo('Sua seção expirou, faça o login novamente')
       this.router.navigate(['/entrar'])
     }
 
@@ -84,23 +86,22 @@ export class InicioComponent implements OnInit {
     if (this.recursoRequest.dataFabricacao == null || this.recursoRequest.dataValidade == null || this.recursoRequest.fabricante == null
       || this.recursoRequest.lote == null || this.recursoRequest.marca == null || this.recursoRequest.quantidade == null || this.recursoRequest.nome == null) {
 
-      alert('Preencha todos os campos!')
+        this.alertasAlertas.showAlertInfo('Preencha todos os campos!')
       
 
     } else if (this.dataDeValidadeEInvalida(this.recursoRequest.dataFabricacao, this.recursoRequest.dataValidade)) {
 
-      alert('Data de validade não pode ser menor ou igual a de fabricação!')
+      this.alertasAlertas.showAlertInfo('Data de validade não pode ser menor ou igual a de fabricação!')
       
 
     }else if (this.recursoRequest.quantidade <= 0) {
 
-      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
+      this.alertasAlertas.showAlertInfo('Quantidade invalida, quantidade precisa ser maior do que zero')
 
     } else {
       this.recursoService.postRecurso(this.recursoRequest).subscribe((resp: RecursoRequest) => {
         this.recursoRequest = resp
-        console.log(this.recursoRequest)
-        alert('Recurso Cadastrado com Sucesso')
+        this.alertasAlertas.showAlertSuccess('Recurso Cadastrado com Sucesso')
         this.recursoRequest = new RecursoRequest()
       })
 
@@ -135,13 +136,13 @@ export class InicioComponent implements OnInit {
     if (this.solicitacaoRequest.quantidade == null || this.solicitacaoRequest.nome == null ||
       this.solicitacaoRequest.marca == null || this.solicitacaoRequest.fabricante == null ||
       this.solicitacaoRequest.descricao == null) {
-      alert('Preeencha todos os campos')
+        this.alertasAlertas.showAlertInfo('Preeencha todos os campos')
     } else if (this.solicitacaoRequest.quantidade <= 0) {
-      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
+      this.alertasAlertas.showAlertInfo('Quantidade invalida, quantidade precisa ser maior do que zero')
     } else {
       this.solicitacaoService.postSolicitacao(this.solicitacaoRequest).subscribe((resp: SolicitacaoRequest) => {
         this.solicitacaoRequest = resp
-        alert('Solicitação Cadastrada com Sucesso')
+        this.alertasAlertas.showAlertSuccess('Solicitação Cadastrada com Sucesso')
         this.router.navigate(['/inicio'])
         this.solicitacaoRequest =  new SolicitacaoRequest()
       })

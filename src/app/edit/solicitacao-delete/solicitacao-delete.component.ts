@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecursoHospitalar } from 'src/app/model/RecursoHospitalar';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { SolicitacaoService } from 'src/app/service/solicitacao.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,7 +18,8 @@ export class SolicitacaoDeleteComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private solicitacaoService: SolicitacaoService
+    private solicitacaoService: SolicitacaoService,
+    private alertasService: AlertasService
   ) { }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class SolicitacaoDeleteComponent implements OnInit {
   apagar(){
 
     this.solicitacaoService.deleteReserva(this.idRecurso).subscribe(()=>{
-      alert('Recurso Apagado com sucesso')
+      this.alertasService.showAlertSuccess('Recurso Apagado com sucesso')
       this.router.navigate(['/inicio'])
     })
     

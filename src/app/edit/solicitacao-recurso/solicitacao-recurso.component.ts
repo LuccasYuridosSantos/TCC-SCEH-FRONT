@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecursoHospitalar } from 'src/app/model/RecursoHospitalar';
 import { RecursoRequest } from 'src/app/model/RecursoRequest';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { RecursoService } from 'src/app/service/recurso.service';
 import { SolicitacaoService } from 'src/app/service/solicitacao.service';
 import { environment } from 'src/environments/environment.prod';
@@ -22,7 +23,8 @@ export class SolicitacaoRecursoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private solicitacaoService: SolicitacaoService,
-    private recursoService: RecursoService
+    private recursoService: RecursoService,
+    private alertasService: AlertasService
   ) { }
 
   ngOnInit() {
@@ -39,22 +41,27 @@ export class SolicitacaoRecursoComponent implements OnInit {
 
     this.recursoRequest = this.converteRecursoParaRequest(this.solicitacao)
 
-    console.log(this.recursoRequest)
-
     if (this.recursoRequest.dataValidade == null || this.recursoRequest.dataFabricacao == null
       || this.recursoRequest.quantidade == null || this.recursoRequest.marca == null
       || this.recursoRequest.fabricante == null || this.recursoRequest.lote == null || this.recursoRequest.descricao == null) {
-      alert('Preeencha todos os campos')
+      this.alertasService.showAlertInfo('Preeencha todos os campos')
     } else if (this.recurso.quantidade <= 0) {
-      alert('Quantidade invalida, quantidade precisa ser maior do que zero')
+      this.alertasService.showAlertInfo('Quantidade invalida, quantidade precisa ser maior do que zero')
     }else if(this.dataDeValidadeEInvalida(this.recursoRequest.dataFabricacao, this.recursoRequest.dataValidade)) {
-      alert('Data de validade não pode ser menor ou igual a de fabricação!')
+      this.alertasService.showAlertInfo('Data de validade não pode ser menor ou igual a de fabricação!')
     }else{
       this.recursoService.putRecurso(this.recursoRequest).subscribe((resp: RecursoRequest) => {
         this.recursoRequest = resp
-        alert('Cadastrado Recurso com Sucesso!')
+        this.alertasService.showAlertSuccess('Cadastrado Recurso com Sucesso!')
         this.recurso = new RecursoHospitalar()
         this.router.navigate(['/inicio'])
+      }, error => {
+        if (error.status == 500) {
+          this.alertasService.showAlertDanger('Ocorreu um erro, tente novamente mais tarde')
+
+        }else if(error.status == 400 ){
+          this.alertasService.showAlertInfo('Quantidade da reserva não é validade')
+        }
       })
     }    
 
