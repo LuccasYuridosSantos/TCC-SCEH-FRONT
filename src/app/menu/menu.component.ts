@@ -32,4 +32,11 @@ export class MenuComponent implements OnInit {
     environment.cnpj = ''
     environment.permissao = ''
   }
+
+  usuarioComPermissaoRoot(){
+      if(environment.permissao == 'ROOT'){
+        return true
+      }
+      return false
+  }
 }

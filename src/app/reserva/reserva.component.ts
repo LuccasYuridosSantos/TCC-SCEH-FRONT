@@ -35,7 +35,7 @@ export class ReservaComponent implements OnInit {
     window.scroll(0,0)
 
 
-    if(environment.token == '' || environment.permissao != 'ADM'){
+    if(environment.token == '' || this.validarPermissao()){
       this.router.navigate(['/inicio'])
     }
 
@@ -43,6 +43,14 @@ export class ReservaComponent implements OnInit {
     let id = this.routeActive.snapshot.params['id']
     this.findByIdRecurso(id)
     this.buscarTodasReservasPorRecurso(id)
+  }
+
+  validarPermissao(){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
+      return false
+    }else{
+      return true
+    }
   }
 
   findByIdRecurso(id: number){

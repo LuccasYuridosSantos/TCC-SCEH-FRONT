@@ -23,12 +23,20 @@ export class SolicitacaoComponent implements OnInit {
 
   ngOnInit() {
 
-    if (environment.token == '' || environment.permissao != 'ADM') {
+    if (environment.token == '' || this.validarPermissao()) {
       this.router.navigate(['/inicio'])
     }
 
     this.buscarTodos()
     
+  }
+
+  validarPermissao(){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
+      return false
+    }else{
+      return true
+    }
   }
 
   buscarTodos(){

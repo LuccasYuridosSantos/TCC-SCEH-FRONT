@@ -29,12 +29,20 @@ export class SolicitacaoRecursoComponent implements OnInit {
 
   ngOnInit() {
 
-    if (environment.token == '' || environment.permissao != 'ADM') {
+    if (environment.token == '' || this.validarPermissao()) {
       this.router.navigate(['/inicio'])
     }
 
     this.idRecurso = this.route.snapshot.params['id']
     this.buscarSolicitacaoPorId(this.idRecurso)
+  }
+
+  validarPermissao(){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
+      return false
+    }else{
+      return true
+    }
   }
 
   cadastrarRecurso() {

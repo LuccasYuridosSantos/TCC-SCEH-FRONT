@@ -121,7 +121,7 @@ export class InicioComponent implements OnInit {
   }
 
   usuarioComPermissao(){
-    if(environment.permissao == 'ADM'){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
       return true
     }
     return false

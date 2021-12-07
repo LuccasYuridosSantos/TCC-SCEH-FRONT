@@ -24,12 +24,20 @@ export class ReservaEditComponent implements OnInit {
 
   ngOnInit() {
 
-    if (environment.token == '' || environment.permissao != 'ADM') {
+    if (environment.token == '' || this.validarPermissao()) {
       this.router.navigate(['/inicio'])
     }
 
     let id = this.route.snapshot.params['id']
     this.buscarReserva(id)
+  }
+
+  validarPermissao(){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
+      return false
+    }else{
+      return true
+    }
   }
 
 

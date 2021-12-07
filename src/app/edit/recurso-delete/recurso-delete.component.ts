@@ -24,12 +24,20 @@ export class RecursoDeleteComponent implements OnInit {
   ngOnInit(){
     window.scroll(0,0)
 
-    if (environment.token == '' || environment.permissao != 'ADM') {
+    if (environment.token == '' || this.validarPermissao()) {
       this.router.navigate(['/inicio'])
     }
 
     this.idRecurso = this.route.snapshot.params['id']
     this.buscarRecursoPorId(this.idRecurso)
+  }
+
+  validarPermissao(){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
+      return false
+    }else{
+      return true
+    }
   }
 
   apagar(){

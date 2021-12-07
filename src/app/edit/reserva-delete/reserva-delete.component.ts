@@ -12,8 +12,16 @@ export class ReservaDeleteComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if(environment.token == '' || environment.permissao != 'ADM'){
+    if(environment.token == '' || this.validarPermissao()){
       this.router.navigate(['/inicio'])
+    }
+  }
+
+  validarPermissao(){
+    if(environment.permissao == 'ADM' || environment.permissao == 'ROOT'){
+      return false
+    }else{
+      return true
     }
   }
 

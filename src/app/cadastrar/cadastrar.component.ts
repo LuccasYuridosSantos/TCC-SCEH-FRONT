@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Funcionario } from '../model/Funcionario';
 import { FuncionarioLogin } from '../model/FuncionarioLogin';
 import { Hospital } from '../model/Hospital';
@@ -31,6 +32,9 @@ export class CadastrarComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0)
+    if (environment.token == '' || environment.permissao != 'ROOT') {
+      this.router.navigate(['/inicio'])
+    }
   }
 
   confirmarSenha(event: any) {
