@@ -54,6 +54,10 @@ export class CadastrarComponent implements OnInit {
         this.router.navigate(['/entrar'])
         alert('Funcionario Cadastrado com sucesso!!')
 
+      }, erro => {
+        if (erro.status == 500) {
+          alert('Ocorreu um erro, tente novamente mais tarde')
+        }
       })
     }
   }
@@ -70,6 +74,10 @@ export class CadastrarComponent implements OnInit {
         this.router.navigate(['/entrar'])
         alert('Hospital Cadastrado com sucesso!!')
 
+      }, erro => {
+        if (erro.status == 500) {
+          alert('Ocorreu um erro, tente novamente mais tarde')
+        }
       })
     }
 

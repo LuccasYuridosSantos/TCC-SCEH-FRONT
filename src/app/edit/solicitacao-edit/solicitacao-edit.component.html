@@ -1,1 +1,40 @@
-<p>solicitacao-edit works!</p>
+<div class="container mt-5 mb-5">
+
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center text-secondary">Atualizar Solicitação</h1>
+      </div>
+    </div>
+  
+    <div class="row d-flex justify-content-center align-items-center m-lg-5">
+      <div class="col-md-6">
+  
+        <div class="form-group mt-1">
+            <label for="usuario" class="mb-2">Nome</label>
+            <input [(ngModel)]='solicitacaoRequest.nome' class="form-control" type="text" name="nomeRecurso"
+                id="nomeRecurso" placeholder="Digite o nome do recurso">
+        </div>
+        <div class="form-group mt-1">
+            <label for="usuario" class="mb-2">Marca</label>
+            <input [(ngModel)]='solicitacaoRequest.marca' class="form-control" type="text" name="marcaRecurso"
+                id="marcaRecurso" placeholder="Digite a marca do recurso">
+        </div>
+        <div class="form-group mt-1">
+            <label for="usuario" class="mb-2">Quantidade</label>
+            <input [(ngModel)]='solicitacaoRequest.quantidade' class="form-control" type="number"
+                name="quantidadeRecurso" id="quantidadeRecurso" placeholder="Informe a quantidade">
+        </div>
+        <div class="form-group mt-1">
+            <label for="usuario" class="mb-2">Fabricante</label>
+            <input [(ngModel)]='solicitacaoRequest.fabricante' class="form-control" type="text"
+                name="fabricante" id="fabricante" placeholder="informe o fabricante">
+        </div>
+        <div class="form-group mt-1">
+            <label for="usuario" class="mb-2">Descricao</label>
+            <input [(ngModel)]='solicitacaoRequest.descricao' class="form-control" type="text" name="descricao"
+                id="descricao" placeholder="Descrição">
+        </div>  
+      </div>
+    </div>
+  
+  </div>

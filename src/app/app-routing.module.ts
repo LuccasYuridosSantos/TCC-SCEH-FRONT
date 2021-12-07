@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
-import { ContatoComponent } from './contato/contato.component';
 import { RecursoDeleteComponent } from './edit/recurso-delete/recurso-delete.component';
 import { RecursoEditComponent } from './edit/recurso-edit/recurso-edit.component';
 import { ReservaDeleteComponent } from './edit/reserva-delete/reserva-delete.component';
@@ -12,14 +11,11 @@ import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicita
 import { EntrarComponent } from './entrar/entrar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ReservaComponent } from './reserva/reserva.component';
-import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'entrar', pathMatch: 'full'},
   {path: 'entrar', component: EntrarComponent},
-  {path: 'contato',component: ContatoComponent },
-  {path: 'sobre-nos', component: SobreNosComponent},
   {path: 'cadastrar', component: CadastrarComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'reserva/:id', component: ReservaComponent},

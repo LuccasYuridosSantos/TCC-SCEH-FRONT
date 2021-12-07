@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid all-screen">
 
     <div class="row bg-custom d-flex align-items-center">
         <div class="col-md-6 text-white">
@@ -10,12 +10,12 @@
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
                     <div class="col-md-6">
-                        <button *ngIf='usuarioComPermissao()'  type="button" class="btn btn-menu me-2" data-bs-toggle="modal"
-                            data-bs-target="#novoRecurso">
+                        <button *ngIf='usuarioComPermissao()' type="button" class="btn btn-menu me-2"
+                            data-bs-toggle="modal" data-bs-target="#novoRecurso">
                             Cadastrar Recurso
                         </button>
-                        <button *ngIf='usuarioComPermissao()'  type="button" class="btn btn-menu me-2" data-bs-toggle="modal"
-                            data-bs-target="#novoSolicitacao">
+                        <button *ngIf='usuarioComPermissao()' type="button" class="btn btn-menu me-2"
+                            data-bs-toggle="modal" data-bs-target="#novoSolicitacao">
                             Cadastrar Solicitação
                         </button>
                         <a class="btn btn-menu mt-3" href="#verRecursos">Ver Recursos</a>
@@ -31,30 +31,33 @@
     </div>
 </div>
 
-<div class="container mt-5 mb-5" id="verRecursos">
+<div class="container mt-5 mb-lg-5" id="verRecursos">
 
     <nav>
         <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
 
-            <button (click)='buscarTodosRecursos()' class="nav-link active" id="nav-todosRecursos-tab" data-bs-toggle="tab"
-                data-bs-target="#nav-todosRecursos" type="button" role="tab" aria-controls="nav-todosRecursos"
-                aria-selected="true">Recursos</button>
+            <button (click)='buscarTodosRecursos()' class="nav-link active" id="nav-todosRecursos-tab"
+                data-bs-toggle="tab" data-bs-target="#nav-todosRecursos" type="button" role="tab"
+                aria-controls="nav-todosRecursos" aria-selected="true">Recursos</button>
 
-            <button (click)='buscarTodosRecursosDoHospital()' class="nav-link" id="nav-recursoHospital-tab" data-bs-toggle="tab"
-                data-bs-target="#nav-recursoHospital" type="button" role="tab" aria-controls="nav-recursoHospital"
-                aria-selected="false">Recursos do Hospital</button>
+            <button (click)='buscarTodosRecursosDoHospital()' class="nav-link" id="nav-recursoHospital-tab"
+                data-bs-toggle="tab" data-bs-target="#nav-recursoHospital" type="button" role="tab"
+                aria-controls="nav-recursoHospital" aria-selected="false">Recursos do Hospital</button>
 
-            <button (click)='buscarTodasSolicitacaoDoHospital()' class="nav-link" id="nav-solicitacao-tab" data-bs-toggle="tab" data-bs-target="#nav-solicitacao"
-                type="button" role="tab" aria-controls="nav-solicitacao" aria-selected="false">Solicitações do Hospital</button>
+            <button (click)='buscarTodasSolicitacaoDoHospital()' class="nav-link" id="nav-solicitacao-tab"
+                data-bs-toggle="tab" data-bs-target="#nav-solicitacao" type="button" role="tab"
+                aria-controls="nav-solicitacao" aria-selected="false">Solicitações do Hospital</button>
 
-            <button (click)='buscarTodasReservasHospital()' class="nav-link" id="nav-reservas-tab" data-bs-toggle="tab" data-bs-target="#nav-reservas"
-                type="button" role="tab" aria-controls="nav-reservas" aria-selected="false">Reservas do Hospital</button>
+            <button (click)='buscarTodasReservasHospital()' class="nav-link" id="nav-reservas-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-reservas" type="button" role="tab" aria-controls="nav-reservas"
+                aria-selected="false">Reservas do Hospital</button>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
 
-        <div class="tab-pane fade show active" id="nav-todosRecursos" role="tabpanel" aria-labelledby="nav-todosRecursos-tab">
-            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-3">
+        <div class="tab-pane fade show active" id="nav-todosRecursos" role="tabpanel"
+            aria-labelledby="nav-todosRecursos-tab">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-5">
                 <div class="col mb-3" *ngFor='let recurso of listaRecurso' style="width: 18rem;">
                     <div class="card border-primary mb-3" style="max-width: 18rem;">
                         <div class="card-header text-center">
@@ -63,35 +66,50 @@
                         <div class="card-body text-primary">
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold"><label>Quantidade:</label></li>
-                                <li class="list-inline-item "><p class="card-text"> {{recurso.quantidade}}</p></li>
+                                <li class="list-inline-item ">
+                                    <p class="card-text"> {{recurso.quantidade}}</p>
+                                </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold"><label>Marca:</label></li>
-                                <li class="list-inline-item"><p class="card-text"> {{recurso.marca}}</p></li>
+                                <li class="list-inline-item">
+                                    <p class="card-text"> {{recurso.marca}}</p>
+                                </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold"><label>Fabricante:</label></li>
-                                <li class="list-inline-item"><p class="card-text"> {{recurso.fabricante}}</p></li>
+                                <li class="list-inline-item">
+                                    <p class="card-text"> {{recurso.fabricante}}</p>
+                                </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold "><label>Fabricação:</label></li>
-                                <li class="list-inline-item"><p class="card-text"> {{recurso.dataFabricacao}}</p></li>
+                                <li class="list-inline-item">
+                                    <p class="card-text"> {{recurso.dataFabricacao}}</p>
+                                </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold"><label>Validade:</label></li>
-                                <li class="list-inline-item"><p class="card-text"> {{recurso.dataValidade}}</p></li>
+                                <li class="list-inline-item">
+                                    <p class="card-text"> {{recurso.dataValidade}}</p>
+                                </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold"><label>Descrição:</label></li>
-                                <li class="list-inline-item"><p class="card-text text-wrap"> {{recurso.descricao}}</p></li>
+                                <li class="list-inline-item">
+                                    <p class="card-text text-wrap"> {{recurso.descricao}}</p>
+                                </li>
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item font-bold"><label>Hospital:</label></li>
-                                <li class="list-inline-item"><p class="card-text text-wrap"> {{recurso.hospital.razaoSocial}}</p></li>
+                                <li class="list-inline-item">
+                                    <p class="card-text text-wrap"> {{recurso.hospital.razaoSocial}}</p>
+                                </li>
                             </ul>
                         </div>
                         <div *ngIf='usuarioComPermissao()' class="card-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-success me-2" [routerLink]="['/reserva', recurso.codigoRecurso]">
+                            <button type="button" class="btn btn-success me-2"
+                                [routerLink]="['/reserva', recurso.codigoRecurso]">
                                 Reservar
                             </button>
                         </div>
@@ -100,7 +118,8 @@
             </div>
         </div>
 
-        <div class="tab-pane fade mt-3 mb-3" id="nav-recursoHospital" role="tabpanel" aria-labelledby="nav-recursoHospital-tab">
+        <div class="tab-pane fade mt-3 mb-5" id="nav-recursoHospital" role="tabpanel"
+            aria-labelledby="nav-recursoHospital-tab">
 
             <table class="table table-light table-hover mt-3 ">
                 <thead>
@@ -116,7 +135,7 @@
                         <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody>
                     <tr *ngFor='let recurso of listaRecursoDoHospital' class="text-center">
                         <td>{{recurso.nome}}</td>
                         <td>{{recurso.quantidade}}</td>
@@ -127,10 +146,12 @@
                         <td>{{recurso.lote}}</td>
                         <td>{{recurso.descricao}}</td>
                         <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger me-2 " [routerLink]="['/recurso-delete', recurso.codigoRecurso]">
+                            <button type="button" class="btn btn-danger me-2 "
+                                [routerLink]="['/recurso-delete', recurso.codigoRecurso]">
                                 Deletar
                             </button>
-                            <button type="button" class="btn btn-info" [routerLink]="['/recurso-edit', recurso.codigoRecurso]">
+                            <button type="button" class="btn btn-info"
+                                [routerLink]="['/recurso-edit', recurso.codigoRecurso]">
                                 Editar
                             </button>
                         </td>
@@ -140,7 +161,7 @@
 
         </div>
 
-        <div class="tab-pane fade" id="nav-solicitacao" role="tabpanel" aria-labelledby="nav-solicitacao-tab">
+        <div class="tab-pane fade mt-3 mb-5" id="nav-solicitacao" role="tabpanel" aria-labelledby="nav-solicitacao-tab">
 
             <table class="table table-light table-hover mt-3 ">
                 <thead>
@@ -156,7 +177,7 @@
                         <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody>
                     <tr *ngFor='let solicitacao of listaSolicitacao' class="text-center">
                         <td>{{solicitacao.nome}}</td>
                         <td>{{solicitacao.quantidade}}</td>
@@ -167,10 +188,12 @@
                         <td>{{solicitacao.funcionario.nome}}</td>
                         <td>{{solicitacao.observacao}}</td>
                         <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger me-2" [routerLink]="['/solicitacao-delete', solicitacao.codigoRecurso]">
+                            <button type="button" class="btn btn-danger me-2"
+                                [routerLink]="['/solicitacao-delete', solicitacao.codigoRecurso]">
                                 Deletar
                             </button>
-                            <button type="button" class="btn btn-info" [routerLink]="['/solicitacao-edit', solicitacao.codigoRecurso]">
+                            <button type="button" class="btn btn-info"
+                                [routerLink]="['/solicitacao-edit', solicitacao.codigoRecurso]">
                                 Editar
                             </button>
                         </td>
@@ -180,8 +203,8 @@
 
         </div>
 
-        <div class="tab-pane fade" id="nav-reservas" role="tabpanel" aria-labelledby="nav-reservas-tab">
-            
+        <div class="tab-pane fade mt-3 mb-5" id="nav-reservas" role="tabpanel" aria-labelledby="nav-reservas-tab">
+
             <table class="table table-light table-hover mt-3 ">
                 <thead>
                     <tr class="table-custom-header text-center">
@@ -196,7 +219,7 @@
                         <th *ngIf='usuarioComPermissao()' scope="col">Opções</th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody>
                     <tr *ngFor='let reserva of listaReserva' class="text-center">
                         <td>{{reserva.codigoReserva}}</td>
                         <td>{{reserva.quantidade}}</td>
@@ -205,8 +228,9 @@
                         <td>{{reserva.entregador}}</td>
                         <td>{{reserva.solicitante}}</td>
                         <td>{{reserva.dataEntrega}}</td>
-                        <td>{{reserva.recursoHospitalar.nome}}</td>                        
-                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center" [routerLink]="['/reserva-edit', reserva.codigoReserva]">
+                        <td>{{reserva.recursoHospitalar.nome}}</td>
+                        <td *ngIf='usuarioComPermissao()' class="d-flex justify-content-center"
+                            [routerLink]="['/reserva-edit', reserva.codigoReserva]">
                             <button type="button" class="btn btn-info">
                                 Editar
                             </button>
@@ -282,7 +306,8 @@
     </div>
 
 
-    <div class="modal fade" id="novoSolicitacao" tabindex="-1" aria-labelledby="novoSolicitacaoLabel" aria-hidden="true">
+    <div class="modal fade" id="novoSolicitacao" tabindex="-1" aria-labelledby="novoSolicitacaoLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -290,18 +315,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    
+
 
                     <div class="col-md-10 justify-content-center m-auto">
                         <div class="form-group mt-1">
                             <label for="usuario" class="mb-2">Nome</label>
-                            <input [(ngModel)]='solicitacaoRequest.nome' class="form-control" type="text" name="nomeRecurso"
-                                id="nomeRecurso" placeholder="Digite o nome do recurso">
+                            <input [(ngModel)]='solicitacaoRequest.nome' class="form-control" type="text"
+                                name="nomeRecurso" id="nomeRecurso" placeholder="Digite o nome do recurso">
                         </div>
                         <div class="form-group mt-1">
                             <label for="usuario" class="mb-2">Marca</label>
-                            <input [(ngModel)]='solicitacaoRequest.marca' class="form-control" type="text" name="marcaRecurso"
-                                id="marcaRecurso" placeholder="Digite a marca do recurso">
+                            <input [(ngModel)]='solicitacaoRequest.marca' class="form-control" type="text"
+                                name="marcaRecurso" id="marcaRecurso" placeholder="Digite a marca do recurso">
                         </div>
                         <div class="form-group mt-1">
                             <label for="usuario" class="mb-2">Quantidade</label>
@@ -315,8 +340,8 @@
                         </div>
                         <div class="form-group mt-1">
                             <label for="usuario" class="mb-2">Descricao</label>
-                            <input [(ngModel)]='solicitacaoRequest.descricao' class="form-control" type="text" name="descricao"
-                                id="descricao" placeholder="Descrição">
+                            <input [(ngModel)]='solicitacaoRequest.descricao' class="form-control" type="text"
+                                name="descricao" id="descricao" placeholder="Descrição">
                         </div>
                         <div class="form-group mt-1">
                             <label for="usuario" class="mb-2">Observação</label>
@@ -326,17 +351,19 @@
                         <div class="form-group mt-3">
                             <label for="usuario" class="mb-2">Solicitação Urgente</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (click)='urgenteTrue()'>
-                                <label class="form-check-label" for="flexRadioDefault1" >
-                                  Sim
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1" (click)='urgenteTrue()'>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Sim
                                 </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked (click)='urgenteFalse()'>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked (click)='urgenteFalse()'>
                                 <label class="form-check-label" for="flexRadioDefault2">
-                                  Não
+                                    Não
                                 </label>
-                              </div>
+                            </div>
                         </div>
                     </div>
 

@@ -8,22 +8,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">CNPJ</label>
-                    <input [(ngModel)]='hospitalReq.cnpj' type="text" class="form-control" id="cnpjForm"
+                    <input [(ngModel)]='hospitalReq.cnpj' type="text" class="form-control" minlength="14" maxlength="18" id="cnpjForm"
                         placeholder="23.172.042/0001-05">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">NOME HOSPITAL</label>
-                    <input [(ngModel)]='hospitalReq.nome'type="text" class="form-control" id="cnpjForm"
+                    <input [(ngModel)]='hospitalReq.nome'type="text" class="form-control" minlength="3" maxlength="30" id="cnpjForm"
                         placeholder="nome do Hospital">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">DDD</label>
-                    <input [(ngModel)]='hospitalReq.ddd' type="text" class="form-control" id="dddForm"
+                    <input [(ngModel)]='hospitalReq.ddd' minlength="3" maxlength="3" type="text" class="form-control" id="dddForm"
                         placeholder="019">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">TELEFONE</label>
-                    <input [(ngModel)]='hospitalReq.telefone' type="tel" class="form-control" id="telefoneForm"
+                    <input [(ngModel)]='hospitalReq.telefone' type="tel" minlength="9" maxlength="12"class="form-control" id="telefoneForm"
                         placeholder=" 99969-9458">
                 </div>
                 <div class="mb-3">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">OBSERVACAO</label>
-                    <input [(ngModel)]='hospitalReq.observacao' type="text" class="form-control" id="observacaoForm">
+                    <input [(ngModel)]='hospitalReq.observacao' type="text" class="form-control" maxlength="100" id="observacaoForm">
                 </div>
                 <button type="button" class="btn btn-cad mt-4" id="btn-cadastrar-hospital" (click)='cadastrarHospital()'>
                     Cadastrar Hospital
@@ -50,30 +50,30 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label " >NOME</label>
-                    <input [(ngModel)]='funcionario.nome' type="text" class="form-control" id="exampleFormControlInput1"
+                    <input [(ngModel)]='funcionario.nome' minlength="3" maxlength="30" type="text" class="form-control" id="exampleFormControlInput1"
                         placeholder="Informe o nome">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">CNPJ DO HOSPITAL</label>
-                    <input [(ngModel)]='hospital.cnpj'type="text" class="form-control" id="cnpjForm"
+                    <input [(ngModel)]='hospital.cnpj'type="text" minlength="14" maxlength="18" class="form-control" id="cnpjForm"
                         placeholder="23.172.042/0001-05">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">MATRICULA</label>
-                    <input [(ngModel)]='funcionario.matricula'type="text" class="form-control" id="exampleFormControlInput1"
+                    <input [(ngModel)]='funcionario.matricula'type="text"  minlength="5" maxlength="20" class="form-control" id="exampleFormControlInput1"
                         placeholder="Informe o numero de matricula">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">USERNAME</label>
-                    <input [(ngModel)]='funcionario.username'type="text" class="form-control" id="exampleFormControlInput1">
+                    <input [(ngModel)]='funcionario.username'type="text"  minlength="5" maxlength="10" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">SENHA</label>
-                    <input (input)='confirmarSenha($event)'type="password" class="form-control" id="exampleFormControlInput1">
+                    <input (input)='confirmarSenha($event)'type="password" class="form-control"  minlength="5" maxlength="20" id="exampleFormControlInput1">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Confimar Senha</label>
-                    <input [(ngModel)]='funcionario.senha'type="password" class="form-control" id="exampleFormControlInput1">
+                    <input [(ngModel)]='funcionario.senha'type="password" class="form-control" minlength="5" maxlength="20" id="exampleFormControlInput1">
                 </div>
                 <button type="button" class="btn btn-cad mt-4" (click)='cadastrarFuncionario()' id="btn-cadastrar-Funcionario">
                     Cadastrar Funcionario

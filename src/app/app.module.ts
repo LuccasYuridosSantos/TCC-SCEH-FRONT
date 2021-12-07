@@ -11,9 +11,6 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { MenuHomeComponent } from './menu-home/menu-home.component';
-import { ContatoComponent } from './contato/contato.component';
-import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
-import { SubmenuComponent } from './submenu/submenu.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
@@ -33,9 +30,6 @@ import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicita
     CadastrarComponent,
     EntrarComponent,
     MenuHomeComponent,
-    ContatoComponent,
-    SobreNosComponent,
-    SubmenuComponent,
     InicioComponent,
     ReservaComponent,
     SolicitacaoComponent,
