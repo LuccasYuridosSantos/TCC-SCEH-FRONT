@@ -28,7 +28,8 @@ export class InicioComponent implements OnInit {
   solicitacaoRequest: SolicitacaoRequest = new SolicitacaoRequest()
 
 
-
+  key = 'nome'
+  reverse = false
 
   constructor(
     private router: Router,

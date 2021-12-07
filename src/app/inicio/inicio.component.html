@@ -59,7 +59,7 @@
             <div class="tab-pane fade show active" id="nav-todosRecursos" role="tabpanel"
                 aria-labelledby="nav-todosRecursos-tab">
                 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-5">
-                    <div class="col mb-3" *ngFor='let recurso of listaRecurso' style="width: 18rem;">
+                    <div class="col mb-3" *ngFor='let recurso of listaRecurso | orderBy : key : reverse' style="width: 18rem;">
                         <div class="card border-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header text-center">
                                 <h5>{{recurso.nome}}</h5>
@@ -137,7 +137,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor='let recurso of listaRecursoDoHospital' class="text-center">
+                        <tr *ngFor='let recurso of listaRecursoDoHospital | orderBy : key : reverse' class="text-center">
                             <td>{{recurso.nome}}</td>
                             <td>{{recurso.quantidade}}</td>
                             <td>{{recurso.marca}}</td>
@@ -179,7 +179,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor='let solicitacao of listaSolicitacao' class="text-center">
+                        <tr *ngFor='let solicitacao of listaSolicitacao | orderBy : key : reverse' class="text-center">
                             <td>{{solicitacao.nome}}</td>
                             <td>{{solicitacao.quantidade}}</td>
                             <td>{{solicitacao.marca}}</td>
@@ -221,7 +221,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor='let reserva of listaReserva' class="text-center">
+                        <tr *ngFor='let reserva of listaReserva | orderBy : key : reverse' class="text-center">
                             <td>{{reserva.codigoReserva}}</td>
                             <td>{{reserva.quantidade}}</td>
                             <td>{{reserva.dataReserva}}</td>

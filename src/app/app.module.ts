@@ -23,6 +23,7 @@ import { RecursoEditComponent } from './edit/recurso-edit/recurso-edit.component
 import { SolicitacaoRecursoComponent } from './edit/solicitacao-recurso/solicitacao-recurso.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OrderModule
   ],
   providers: [{
     provide: LocationStrategy, 
